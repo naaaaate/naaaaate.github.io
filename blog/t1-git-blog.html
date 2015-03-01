@@ -6,19 +6,67 @@
 </head>
 
 <main>
-  <h1>Post Title</h1>
-  <h2>The subtitle, if you want it</h2>
-  <h4>Today's Date</h4>
+  <h1>Too Le-GIT to Quit!</h1>
+  <h2>Understanding Git and Why We Use it.</h2>
+  <h4>2/27/15</h4>
 
   <section>
     <p>
-      Your first paragraph goes here. I'm using Web 2.0 Ipsum to add content. Webtwo ipsum dolor sit amet, eskobo chumby doostang bebo. Nuvvo koofers oooooc voxy klout jaiku palantir flickr insala zinch napster oooj, airbnb mzinga vimeo yuntaa balihoo plickers whrrl edmodo appjet kippt. Yoono imvu hulu eduvant blekko imvu ebay voki napster skype, hipmunk zinch wesabe bubbli ning meebo bitly zlio. Fleck elgg ideeli disqus rovio zillow sifteo blyve jabber, bitly geni zoho foodzie qeyno twones klout jiglu, hipmunk jaiku balihoo plickers heekya eskobo yuntaa. Sococo whrrl plickers movity whrrl zinch voki nuvvo meebo, quora heroku unigo kno wufoo jibjab woopra, groupon yuntaa spock mzinga jumo meebo movity.
+      Here in my first week at DevBootCamp, I've learned a great deal about Git, what it is, how to navigate around in it, what its purpose is etc.. and the more I use it, the more I realize how vital it is for programmers understand how it works.  Maybe you are new to coding and are asking: “What is this ‘Git’ that you speak of?” Well in a nutshell, Git helps you and a project team to collaborate on and share all of your files in one place without worrying about messing up another user’s work.  Now, I'm not going to explain all the in's and out's about Git and GitHub, b/c frankly I don't know all of them myself and have only been working with it for a week, but I will try to the best of my ability to explain it so that a any new programmer just getting started could understand it.  So, Here we go..
+
+    </p>
+
+      First lets define Git, Github, and why they are so important to developers everywhere.
+      Git and GitHub are like siblings; they’re absolutely related, but still two different things. The main difference between Git and GitHub is that:
+
+    <p>
+      Git is software that lives on your local pc and does what you tell it to do via the terminal command line.
+      GitHub on the other hand is the actual website that lives on the internet. GitHub’s main purpose is like its name says: to behave as an actual hub or central folder to upload and download project files from.
     </p>
     <p>
-        Lijit groupon ning stypi eskobo blyve ning shopify oooooc, meebo groupon prezi ebay voxy bitly diigo. Spock ifttt skype hipmunk movity whrrl bebo oooj empressr, disqus insala palantir bitly dropio zimbra zinch oooooc etsy, klout spock insala quora omgpop trulia jibjab. Sifteo dogster ebay grockit geni scribd bitly ning unigo, plickers voki mzinga tumblr kaboodle mozy whrrl woopra udemy, foodzie joukuu elgg twitter shopify akismet rovio. Kosmix eduvant woopra dopplr balihoo ning bebo akismet, boxbe vimeo kosmix shopify zappos bitly geni loopt, qeyno disqus sococo squidoo wikia octopart.
+      Both are software that you or your project team can use to save different versions of the project you are working on. This is a term that is widely referred to in Git as "Version Control”.  Version control is basically saving and storing different versions of a project in a central folder location, and having the ability to go back to any of those versions if you mess up on your project.
+    </p>
+     <p>
+      Still confused? Well, Lets look at a simple example of a game I used to play involving race cars and Nintendo:
+
+      Lets say you’re playing a race car video game (maybe something like “Mario Kart”) on your Nintendo 64 (Yeah, I’m that old!) and inside your game as the race is about to begin you see the countdown come up on the screen: “3.. 2.. 1.. GO!” and you’re off. After a few minutes go by, you round the curve, pass 3 more CPU opponents, and you’re in first place! But the race isn’t over, so you keep driving and all of a sudden you drive over a bridge with flags on it and a voice in the game yells out: “CHECKPOINT!” A few more seconds go by and you’re coming up on a sharp curve! You try your hardest to turn left but no matter how hard you push that joystick to the left and even twist you’re physical body to the right (as if you are in a real car) the car on the screen isn’t turning fast enough, and you fall into the lake below and crash.
+      Normally, your natural reaction would be that all was lost and you’d have to start over from the very beginning. But, luckily for you, a few minutes prior to your big crash, you passed a “CHECKPOINT” in the game! Which means you do not have to start over from the very beginning. You get to start from that last “CHECKPOINT”, which ultimately means it will take you less time to catch up to the CPU opponents and reclaim your first place lead and eventually win the race.
+    </p>
+
+    <p>
+      That is exactly how “Version Control” works. You are essentially saving a point in your project that you can go back to if you miss a sharp turn and crash into a lake (figuratively speaking of course).  In a real world scenario, if you make a change to a file and save to a server, and a co worker opens that file on the server and deletes everything, then all is lost. But with version control, if you saved that same file to the server and a co-worker opened that file and deleted everything and saved it back, all would not be lost! You would still have your “version” of the file that you saved the first time.  So Version Control is a nice way of saying: lets save everything so that if someone messes up on the project in the future, we can always go back to a restore point in time. Lets look at a more real life example that involves actually using Git and GitHub.
+    </p>
+Lets say you and a classmate are assigned to work on one coding project. Each person has their own laptop but will need a place to store all the files in a central location so that each person can get to the changes the other person makes. This is where GitHub comes in. In Github (which resides on the internet) you can make a central folder that lives on the internet so that you and your coding partner can share updates to the project you both are working on. So lets say you both create an account on GitHub and create a central folder to both send updates to. Now you each need to copy that folder down to your laptop so you can both work in it, at your own homes, at any time you want to.
+In the Git World we call this a: “pull” (This is where “Git” comes in).
+ Whenever you want to copy the central folder down to your local computer using Git software, you need to:
+1. Download the Git software and install it onto your local Mac (I’m using a Mac in this example..)
+2. Then open up your command line terminal program on a Mac (the black box logo with a blinking cursor to type commands into)
+3. Navigate to the folder on your local machine (using cd command ie: "cd DBC” navigates to a folder called: DBC) that you want to download the online GitHub folder into.
+4. Use the Git software by typing in the command “git pull” which will pull everything from the central folder on GitHub down to your local pc folder that you navigated to. Now that everything is copied to your local Mac, you can each start working on the project by creating and editing files.
+But what if you add a new file on your pc and your partner adds a completely different file on their pc? You will somehow need to get their new file onto your pc and merge the changes with your version of the project, and your partner will need to do the exact same thing. This again can be accomplished with what the Git World calls a: “push”.
+1. The first step is to open up your command line terminal program again,
+2. Then navigate to your folder where the project is saved on your local Mac and type “git push” so that a copy of your version of the project is now saved onto the central folder on GitHub.
+Now your coding partner can combine their changes by:
+1. Downloading or “pulling” your version down from the Central Location folder on GitHub,
+2. Merging their new file into the project that has your new file, and finally..
+3. “Pushing” the project back up to the Central location folder on GitHub so that the project is up to date.
+    <p>
+      This is basically a shorthand version of how a project workflow is supposed to operate (generally speaking of course). To recap:
+1. We created a central folder on GitHub.com
+2. Copied that folder to our Local Mac
+3. Used Git Software on our local Mac to "pull" changes down to us and to "push" changes back up to the Central folder on GitHub.
+    </p>
+
+    <p>
+      One last benefit I will mention about using Git software on your local mac is that it is great for tracking changes to files you make in your project folder. For example, Lets say you downloaded or “pulled” folder called “DBC” from GitHub.com to your local Mac. Every time you add a file, delete a file, edit changes to a file within that “DBC” folder, Git will automatically make a note in its system, that something has changed, and will let you know when you get ready to “push” your project back up to the Central Folder on GitHub. The Git software is just like that exam moderator in college during finals.. its ALWAYS watching!, and more specifically its always watching for changes you make to the folder you have downloaded or “pulled” from GitHub.
     </p>
     <p>
-        Kazaa meevee eduvant gsnap movity kosmix kazaa klout jumo, trulia unigo groupon wakoopa spock knewton glogster heroku oooj, ning imvu appjet eskobo zillow twitter rovio. Glogster chegg voxy greplin dopplr voki foodzie xobni weebly odeo, sococo zynga knewton loopt palantir lala blyve tumblr blekko, twones akismet plaxo kippt meebo zillow zooomr insala. Oovoo imeem napster divvyshot zinch imeem voxy shopify, fleck kazaa zinch lanyrd boxbe joost wakoopa nuvvo, orkut elgg heekya sifteo scribd napster. Yammer yoono groupon dopplr cloudera nuvvo eduvant klout, voxy groupon disqus eduvant oooj greplin.
+      Before I end this blog I would like to review a few key topics we touched on.
+First, Git and GitHub are not the same thing, but are absolutely related and work together. We use Github to store our code in a central location folder we create because its a great way to collaborate with team project members, its on the internet so it will never crash (like our hard drives tend to do), and whenever someone “Pushes” changes to Github, detailed info is given to the rest of the team about the change such as: who made the change, what time they made it, what specific line of code was deleted and added etc. We use Git on our local computers to make changes to files, to “pull” down other team members’ uploaded project files on GitHub, to “push” our own changes back up to GitHub, and to see what files have changed and need to be saved in our local computer folders that are synced with GitHub. And finally, one of the main benefits of using Git is “Version Control”. If you or another team member ever mess up on the current project files you are working on (or loosely said another way: if you are racing inside of Mario Kart for Nintendo 64 and you ever fall off the ledge and crash into a lake), just remember: All is Not Lost! you can always go back to a “Checkpoint” (or another older version) of your project and start from there.
+
+Hopefully this blog has been very informative and has cleared up any questions about what Git/GitHub is, why we use Git/GitHub, what the benefits of using Git/Github are, and what version control is.
+
+~Nate
     </p>
 
       <!-- copy and paste as many sections as you want to add paragraphs -->
