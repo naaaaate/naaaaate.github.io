@@ -1,66 +1,59 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900);
 
-html {
-    margin: 0;
-    padding: 0;
+
+/*
+#social {
+    position: absolute;
+    top: 400px;
+    left: 500px;
 }
 
-body {
-    background: #CCC;
-    margin: 0;
-    padding: 0;
-    font-family: "Lato";
-    font-size: 18px;
-    line-height: 26px;
-
+#social img{
+    position: absolute;
+    top: 30px;
+    height: 30px;
+    width: 30px;
 }
+*/
 
-#wrapper {
-    width: 960px;
-    background: #FFF;
-    margin: 0 auto;
 
-}
-.header {
-    height: 300px;
-    overflow: hidden;
-}
 .content {
     width: 650px;
     display: inline-block;
     vertical-align: top;
-    padding: 20px;
+    padding: 50px;
+    position: relative;
+    top: 200px;
+    left: 50px;
 }
-.sidebar {
+
+aside {
     width: 220px;
-    padding: 20px;
+    padding: 50px;
     display: inline-block;
     vertical-align: top;
+    position: relative;
+    top: 200px;
+    left: 50px;
 }
-.header img {
-    width: 100%;
+
+aside ul li{
+    margin: 0 auto;
+    list-style: none;
+
+}
+
+aside a {
+  color: blue;
+  padding: 10px;
 }
 
 .post {
-    border-bottom: 1px solid #CCC;
+    padding-bottom: 100px;
 }
 
-h1 {
-
-}
-
-h2{
-    font-weight: 900;
+.post p {
+    padding-bottom: 0px;
     margin-bottom: 0px;
 }
 
-h3{
-    font-weight: 700;
-    margin-top: 0px;
-    margin-bottom: 0px;
-}
 
-h4{
-    font-weight: 400;
-    margin-top: 0px;
-}
