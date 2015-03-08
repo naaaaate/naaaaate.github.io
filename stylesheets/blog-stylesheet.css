@@ -1,5 +1,25 @@
 
+#socialblog{
+    position: absolute;
+    top: 450px;
+    left: 500px;
+}
 
+#socialblog h3{
+  position: relative;
+  left: 30px;
+}
+
+#socialblog img{
+    position: absolute;
+    top: 25px;
+    height: 30px;
+    width: 30px;
+}
+
+#socialblog a{
+  margin-right: 35px;
+}
 /*
 #social {
     position: absolute;

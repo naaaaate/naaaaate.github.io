@@ -69,21 +69,25 @@ nav a {
 }
 
 
-footer{
-    position: relative;
-    top: 200px;
+#socialindex{
+    position: absolute;
+    top: 450px;
     left: 500px;
-
 }
 
-footer img{
+#socialindex h3{
+  position: relative;
+  left: 30px;
+}
+
+#socialindex img{
     position: absolute;
-    top: 30px;
+    top: 25px;
     height: 30px;
     width: 30px;
 }
 
-footer a{
+#socialindex a{
   margin-right: 35px;
 }
 
