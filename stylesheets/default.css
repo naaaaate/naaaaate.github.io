@@ -1,3 +1,6 @@
+/*This CSS links directly to index.html*/
+
+
 body, div, h1,h2,h3,h4,h5,h6,p,ul,img{
     margin:0px;
     padding:0px;
@@ -26,9 +29,9 @@ header {
     position: relative;
     top: 0px;
     left: 0px;
-    height: 300px;
+    height: 500px;
     color: #FFF;
-    background-color: #036;
+    background-color: black;
 
 }
 
@@ -39,8 +42,13 @@ header h1 {
     top: 0px;
     left: 500px;
     padding-top: 260px;
+}
 
-
+header h2 {
+    background-color: ;
+    position: absolute;
+    font-family: cursive;
+    margin-top: 70px;
 }
 
 header img{
@@ -49,12 +57,14 @@ header img{
     height: 300px;
     width: 100%;
     overflow: hidden;
+    box-shadow:10px 10px 5px #888888;
 }
 
 nav{
   position: absolute;
-  top: 300px;
-  left: 420px;
+  top: 70px;
+  right: 70px;
+  font-family: cursive;
 }
 
 nav ul li {
@@ -69,10 +79,11 @@ nav a {
 }
 
 
+/*Social Media Nav position */
 #socialindex{
     position: absolute;
-    top: 450px;
-    left: 500px;
+    top: 440px;
+    left: 840px;
 }
 
 #socialindex h3{
@@ -80,16 +91,18 @@ nav a {
   left: 30px;
 }
 
-#socialindex img{
+/*control color of social media icons:*/
+#socialindex i{
     position: absolute;
-    top: 25px;
-    height: 30px;
-    width: 30px;
+    color: silver;
 }
 
 #socialindex a{
-  margin-right: 35px;
+  margin-right: 100px;
 }
+
+
+
 
 h2{
     font-weight: 900;

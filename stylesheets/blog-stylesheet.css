@@ -1,25 +1,29 @@
+/*This CSS affects mainly the blog-template main page*/
 
+/*SocialBlog = social media icons:*/
+
+/*Socialmedia icons position */
 #socialblog{
-    position: absolute;
-    top: 450px;
-    left: 500px;
+position: absolute;
+    top: 440px;
+    left: 840px;
+
 }
 
 
 #socialblog h3{
-  position: relative;
-  left: 30px;
+
 }
 
-#socialblog img{
+/*social media icon color:*/
+#socialblog i{
+    color: silver;
     position: absolute;
-    top: 25px;
-    height: 30px;
-    width: 30px;
 }
 
 #socialblog a{
-  margin-right: 35px;
+  margin-right: 100px;
+
 }
 
 .content {
@@ -28,7 +32,7 @@
     vertical-align: top;
     padding: 50px;
     position: relative;
-    top: 200px;
+    top: 100px;
     left: 50px;
 }
 
@@ -38,7 +42,7 @@ aside {
     display: inline-block;
     vertical-align: top;
     position: relative;
-    top: 200px;
+    top: 100px;
     left: 50px;
 }
 
@@ -62,4 +66,8 @@ aside a {
     margin-bottom: 0px;
 }
 
+h1{
+    font-family: cursive;
+    font-size: 50px;
+}
 
