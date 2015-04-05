@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>"Classes"</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../stylesheets/default.css">
+  <link rel="stylesheet" type="text/css" href="../stylesheets/blog-stylesheet.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <!--Need stylesheet below for code to appear in html. uses <pre> or <code> tags w
+  class = "prettyprint" -->
+  <link rel="stylesheet" type="text/css" href="../stylesheets/highlighter/prettify.css">
+</head>
+
+<body>
+
+  <div id="wrapper">
+    <header>
+      <img src="./sfbridge.jpg" />
+      <!--<h1>Nate Blog</h1> -->
+    </header>
+    <nav>
+         <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="./blog-template.html">Blog</a></li>
+          <li><a href="#">Portfolio</a></li>
+          <li><a href="#">Contact Me</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+      <div class="post">
+        <h2>Methods</h2>
+        <h3>A brief blog on using Methods in Rubys.</h3>
+        <h4>4/5/15</h4>
+          <p>
+            This week I wanted to tackle the subject of Methods and how to use them in Ruby. Methods are extremely important and to understand them I think it would be benefitial to start thinking of methods as the verbs or the action of your objects. Methods are how your objects perform actions. Lets look at a few examples of different methods.
+          </p>
+          <br>
+          <p>
+            Maybe you are new to progamming and don't understand objects and methods. Very breifly.. objects can be thought of as the nouns and methods as stated earlier can be thought of as the verbs. Methods allow objects to perform specific actions and communicate with other objects. But methods dont just simply perform actions. Methods can make your programs and maybe even your life as a programmer a whole lot easier! For example, maybe you need to print out a name or a number a certain amount of times, or maybe you need to search an array of people's ages for a the number of people under 30, or maybe you have a group of 100 people and you need to divide them up into groups of 5, Just know.. that there is a method for that!
+            <br>
+            But before we go any further into examples of methods, we need to see how do we create a method within a class, and how do we use or access that method. We create methods by 'defining' them with the keyword "def" and we end our methods with the keyword "end". For example:
+            <pre>
+              def speak
+
+              end
+            </pre>
+            As you can see in this example I have created a method called speak. I defined it with keyword "def", then I named the method "speak" (in lower case), and finally added an "end" keyword. The code for the speak method goes in between the def speak and the end.
+            So if we wanted some code that printed out a person's name we could simply code that in there..
+            <pre>
+              def speak
+                puts "Hello Nate!"
+              end
+            </pre>
+            Here we are printing out "Hello Nate".  To call this method in code we would do this by creating an object, maybe called: human and using the dot operator and the method name after like so..
+            <pre>
+              human = Person.new
+              human.speak
+            </pre>
+            Here I have created a human object from the Person class.
+            Then I have called the speak method on human. The output of this method will print out in the console: "Hello Nate!"
+            <br>
+            Now, maybe you dont want to print out "Hello Nate" to the console. Maybe you want to print out your name or the name of some one else. You could do so by setting what's called a Parameter in the method definition and when you called it, you could enter the person's name you are calling (otherwise called the Argument) in the method.
+            Lets look at an example:
+            <pre>
+              def speak(name)
+                puts "Hello #{name}"
+              end
+
+              human.speak("smart guy!") #Outputs: Hello smart guy!
+
+            </pre>
+            Lets break this down.. Here, we define a method that takes a paramter or in this case a string called name. It's output will print to the screen: Hello plus whatever you entered for name. In our example we passed in an argument string called: "smart guy!" so that the console will print out "Hello smart guy!"
+            <br>
+            Now, one important thing to distinguish with in a method call is what the method "returns" vs what it "prints" out. Two totally separate things. In our example we "puts" out: "Hello #{name}". Which is fine because it will print out Hello and whatever the name is, BUT what is the return value? The return value of puts is always "nil". Another way to understand this is to know that: every method will always return a value. It can never not return something, and in Ruby, the last line of a method is what the return value is. For "puts", in this case, its return value is always nil. But, what if the last line of this method was: a = 2. Then the method would have returned the variable a which equals 2.
+            <br>
+            One important thing to note, is that there are also methods that come "built in" within the Ruby language Objects. Objects such as Arrays, Strings, Hashes, all have methods that let you access their contents and manipulate them in a much more convenient way. For example..
+            <pre>
+              3.times do
+                puts "hi"   #will print out "hi" 3 times using the 'times' method.
+              end
+
+              3.to_s       #will convert 3 to a string
+
+              a = [ "a", "b", "c" ]
+              a.index("b")              # returns an integer 1 bc the index of b
+                                        # is 1.
+            </pre>
+            These are just a few of these methods that are built in for objects in ruby that you can use to make it easier to code your programs.
+            <br>
+          </p>
+          <br>
+          <p>
+            That touches on some of the basics of methods, how to create them, how to call them, and a few examples of built in methods to make it easier to code.
+            I hope this tutorial has helped you to better understand Methods.
+            Thanks for reading!
+            <br>
+            ~Nate
+          </p>
+
+
+
+
+      </div>
+    </div>
+
+    <aside>
+      <h2>Recent Blog Posts</h2>
+       <ul>
+        <li><a href="./t1-git-blog.html">Blog Post 1</a></li>
+        <li><a href="./c1-chefs-kitchen.html">Blog Post 2</a></li>
+        <li><a href="./t2-css-design.html">Blog Post 3</a></li>
+        <li><a href="./t3-arrays-hashes.html">Blog Post 4</a></li>
+        <li><a href="./c3_thinking-style.html">Blog Post 5</a></li>
+        <li><a href="./t4-enumerable-methods.html">Blog Post 6</a></li>
+        <li><a href="./c4-tech-issues.html">Blog Post 7</a></li>
+        <li><a href="./t5-ruby-classes.html">Blog Post 8</a></li>
+        <li><a href="./c5-feedback.html">Blog Post 9</a></li>
+        <li><a href="./t6-oop-concepts.html">Blog Post 10</a></li>
+        <li><a href="#">Blog Post 11</a></li>
+        <li><a href="#">Blog Post 12</a></li>
+        <li><a href="#">Blog Post 13</a></li>
+        <li><a href="#">Blog Post 14</a></li>
+        <li><a href="#">Blog Post 15</a></li>
+        <li><a href="#">Blog Post 16</a></li>
+      </ul>
+    </aside>
+  <!--Ends Wrapper Div -->
+  </div>
+  <!--Need 2 script tags below for pre or code tags to show code in html-->
+  <script src="../stylesheets/highlighter/prettify.js"></script>
+  <script>prettyPrint();</script>
+</body>
+</html  -->
