@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Javascript Objects & Prototypes Cheat Sheet</title>
+<link type="text/css" rel="stylesheet" href="./stylesheets/cheat_sheet_styles.css"/>
+</head>
+
+<body>
+
+<div id="container">
+    <h1><p>Javascript Objects and Prototypes</p></h1>
+    <div id="leftcol">
+      <nav>
+      <p>Object syntax —
+      <ul>
+          <li><a href="#objects">Create New Object</a></li>
+          <li><a href="#properties">Add Property To Object</a></li>
+          <li><a href="#constructors">Create a Constructor Object</a></li>
+          <li><a href="#methods">Create a method</a></li>
+          <li><a href="#delete">Delete Object / property</a></li>
+      </ul>
+      </p>
+      <p>Prototypes syntax —
+      <ul>
+          <li><a href="#method_proto">Add New Method to Prototype</a></li>
+          <li><a href="#prop_proto">Overriding Properties </a></li>
+          <li><a href="#function_proto">Using functions w Prototypes</a></li>
+          <li><a href="#prop_proto">Define a new Property w Prototypes</a></li>
+          <li><a href="#hasownprop_proto">Using the hasOwnProperty</a></li>
+      </ul>
+      </p>
+      </nav>
+      <main>
+        <p id="Objects">
+        <b>How to Create a new object:</b><br>
+        var nate = {};<br>
+        </p>
+        <p id="properties">
+        <b>How to add properties to an object:</b><br>
+        var nate = {<br>
+            name: "nate",<br>
+            age: 30,<br>
+            "other fav food": "burgers"<br>
+        }<br>
+        If the Property is not a valid name, it must be quoted.<br>
+        </p>
+        <p id="constructors">
+        <b>How to create constructor:</b><br>
+        function Person(name,age){<br>
+            this.name = name;<br>
+            this.age = age;<br>
+        }<br>
+
+        <b>How to create new ppl from our Person Constructor:</b><br>
+        var nate = new Person("Nate", 30);<br>
+        var nicholas = new Person("Nicholas", 40);<br>
+        </p>
+        <p id="methods">
+        <b>Methods are simply properties that hold function values.</b><br>
+        How to create a method on the "nate" object:<br>
+        nate.run = function(where, speed){<br>
+            console.log("nate ran to the " + where + "at" + speed + "MPH!");<br>
+        }<br>
+        This method takes two parameters and prints out a phrase with those 2
+        parameters.<br>
+        </p>
+        <p id="delete">
+        <b>How to delete properties:</b><br>
+        delete nate.age; //this will delete the age property.<br>
+
+        delete nate; //this will delete the nate object.<br>
+        </p>
+
+
+        <p id = "method_proto">
+        <b>Add a new method to a prototype:</b><br>
+        Rabbit.prototype.dance = function() {<br>
+        console.log(“The “ + this.type + “ rabbit dances a jig.”);<br>
+        };<br>
+        invocation:<br>
+        instanceName.dance();<br>
+        </p>
+        <p id = "prop_proto">
+        <b>Overriding derived properties enables us to express exceptional</b><br> properties while letting non-exceptional or default objects imply<br> take a standard value from their prototype.<br>
+
+        Rabbit.prototype.teeth = “small”;<br>
+        console.log(killerRabbit.teeth); // => small<br>
+        killerRabbit.teeth = “long, sharp, and bloody”;<br>
+        console.log(killerRabbit.teeth); // => long, sharp, and bloody<br>
+
+        console.log(Rabbit.prototype.teeth); // => small<br>
+        </p>
+        <p id = "function_proto">
+        <b>W used an object as a way to associate values with names by creating</b><br> properties for the names and giving them the corresponding value as their value. Example:<br>
+
+        var map = {};<br>
+        function storePhi(event, phi) {<br>
+            map[event] = phi;<br>
+        }<br>
+        storePhi(“pizza”, 0.069);<br>
+        storePhi(“touched tree”, -0.081);<br>
+
+        Using this function, we could for/in loop and test whether a name is in the map object using the in operator, but the object’s prototype gets in the way.<br>
+        </p>
+        <p id = "prop_proto">
+        <b>To define a new property:</b><br>
+        Object.defineProperty(Object.prototype, “hiddenNonsense”, <br>{enumerable: false, value: “hi”});<br>
+
+
+        </p>
+        <p id = "hasownprop_proto">
+        <b>console.log(map.hasOwnProperty(“toString”)); // => false</b><br>
+
+        Use the .hasOwnProperty(“toString”)); to handle the regular in <br>operator in a for/in loop as it claims that the Object.prototype properties exist in our object.
+        </p>
+
+      </main>
+    </div>
+    <footer></footer>
+</div>
+
+</body>
+</html>
