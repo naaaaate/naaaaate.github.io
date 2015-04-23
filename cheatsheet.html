@@ -30,7 +30,15 @@
           <li><a href="#hasownprop_proto">Using the hasOwnProperty</a></li>
       </ul>
       </p>
+      <p>JavaScript DOM —
+      <ul>
+          <li><a href="#dom">DOM</a></li>
+
+      </ul>
+      </p>
       </nav>
+
+
       <main>
         <p id="Objects">
         <b>How to Create a new object:</b><br>
@@ -114,6 +122,57 @@
 
         Use the .hasOwnProperty(“toString”)); to handle the regular in <br>operator in a for/in loop as it claims that the Object.prototype properties exist in our object.
         </p>
+
+        <p id="dom">
+        <b>How to add a classname to a node :</b><br>
+        document.getElementById('release-0').classname = "done";<br>
+        //This will select a node by its "id" in the html. and adds a classname to it.<br>
+        <b>How to hide a node by its id:</b><br>
+        document.getElementById('release-1').style.display = "none";<br>
+        //This will hide the display of nodes with id of release-1<br><br>
+
+        <b>How to change inner text of a specific html node/tag:</b><br>
+        document.getElementsByTagName('h1')[0].innerHTML = "I completed release 2";<br>
+        //This will change the inner text of h1 node. NOTICE:<br> getElementsByTagName will return array u can loop thru.<br>
+        so here, only the 1st element h1's text will be edited. <br>
+        NOTE: getElementsByClassName: will return array as well.<br>
+        <br><br>
+        <b>How to select nodes of a specific classname and iterate thru each one and change fontSize :</b><br>
+        //when u getElementsByClassName set it to a variable which is an array <br>
+        var x = document.getElementsByClassName('release-4');<br>
+
+        //Then loop thru the array.
+        var i;<br>
+        for (i=0; i < x.length; i++){<br>
+          x[i].style.fontSize = '2em';<br>
+        }<br>
+        //So here every element in the array w Classname: release-4 will get a fontsize of 2em.<br>
+        <br><br>
+        <b>How to use template element tag and clone and append it to document body:</b><br>
+        //Here we have template element which:<br> allows developers to create client-side templates made up of chunks of reusable DOM.<br>
+        Key is that they dont move!<br><br>
+
+        < template id="hidden">
+          < div>
+            < h1> Congrats! You finished the challenge.</h1>
+            < img src="http://media.giphy.com/media/2UpzC3iPenf44/giphy.gif">
+          < /div>
+        < /template>
+
+        Take the HTML in the template.hidden and append it to the bottom of the page:<br>
+        //so to append: we must grab the getElementByID and set to variable.<br>
+        then clone it with: var.content.cloneNode(true)<br>
+        and append to document.body with:: appendChild ...
+        <br>
+        <br>
+        var templ = document.getElementById('hidden');
+        document.body.appendChild(templ.content.cloneNode(true));
+
+        </p>
+
+
+
+
 
       </main>
     </div>
