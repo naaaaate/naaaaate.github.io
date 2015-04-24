@@ -35,6 +35,13 @@
           <li><a href="#dom">DOM</a></li>
       </ul>
       </p>
+      <p>JQuery Notes —
+      <ul>
+          <li><a href="#jq">DOM</a></li>
+      </ul>
+      </p>
+
+
       </nav>
 
 
@@ -168,7 +175,76 @@
         document.body.appendChild(templ.content.cloneNode(true));
 
         </p>
+        <p id = "jq">
+          <b>What is jQuery? :</b><br>
+          jQuery is a library, or set of helpful add-ons, to the JavaScript programming language. <br>
+          <br>
+          <b>example of jquery how to access an element and do something to it:</b><br>
+          We have a script.js file w this in it:<br>
+          $(document).ready(function() {<br>
+          $('#notready').fadeOut(1000);<br><br>
+          //the second line '#notready' gets the id of a div element and <br>
+          fades it out when the page loads.<br>
+          <br>
+          //here is the html w the divs below..<br>
+          < html><br>
+            < head><br>
+            < title>What Say You?</title><br>
+                < link rel="stylesheet" type="text/css" href="stylesheet.css"/><br>
+                <script type="text/javascript" src="script.js"></script><br>
+          < /head><br>
+          < body><br>
+                < div id="ready">I'm ready!< /div><br>
+                < div id="notready">You'll never take me alive, jQuery!< /div><br>
+          < /body><br>
+          < /html><br>
+          <br>
+          <b>How to link jQuery to HTML file :</b><br>
+          We need to link our HTML page to our jQuery script so our jQuery magic will affect our HTML.<br>
+          Just like we need a < link> tag to connect our HTML and CSS, we need a < script> tag to connect our HTML and jQuery.<br>
+          <br>
+          in the head tag of html file:<br>
+          < head><br>
+            < title></title><br>
+            <!--Add your script tag here.--><br>
+            <script type="text/javascript" src="script.js"></script><br>
+          < /head><br>
+          <br>
+          <b>How to make a div fade when mouse into it:</b><br>
+          The js looks like this.. also practice linking to script.js file in head tags in script tags..
 
+          $(document).ready(function(){
+            $('div').mouseenter(function(){
+               $('div').fadeTo('fast', 1);
+               });
+          });
+          <br><br>
+          <b>How to use on method to handle events:</b><br>
+          <b>//here we change an img when we mouseenter and mouseleave</b><br>
+          <br>
+          $ ('img').on('mouseenter', function(){<br>
+          $ (this).attr('src', 'https://lh6.googleusercontent.com/-2q-MKgOtxps/AAAAAAAAAAI/AAAAAAAAAAY/A4VOhsJUTv0/photo.jpg');
+          });<br>
+          $('img').on('mouseleave', function(){<br>
+          $(this).attr('src', 'dbc_logo.png');<br>
+          });<br>
+          <br>
+          <br>
+          <b>//here we are selecting the first h1 element and changing MULTIPLE <br>properties about it.. so we use curly-braces{}..<br>
+          //if we wanted to do single we would use.. just regular ('property','value') syntax..</b><br>
+          //can also use: $('body > h1') to select the first h1 of its parent
+           $("h1:first").css({"color": "red", "border": "5px solid black", "visibility": "visible"});<br>
+          <br>
+          //also here are a few helpful ie's on selecting elements and classes and child elements in classes or id's..
+          <a href="http://www.w3schools.com/jquery/jquery_ref_selectors.asp"> Selectors in JQuery</a><br>
+          <br>
+          <b>Here we select h1 with mascot class on it.. and change text inside original to fiery skippers.</b><br>
+          $('h1','.mascot').html("Fiery Skippers");<br>
+
+
+
+
+        </p>
 
 
 
