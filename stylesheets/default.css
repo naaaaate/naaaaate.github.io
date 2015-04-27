@@ -1,0 +1,121 @@
+/*This CSS links directly to index.html*/
+
+
+body, div, h1,h2,h3,h4,h5,h6,p,ul,img{
+    margin:0px;
+    padding:0px;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #FFF;
+    margin: 0;
+    padding: 0;
+    font-family: "Lato";
+    font-size: 18px;
+    line-height: 30px;
+}
+
+#wrapper {
+    width: 100%;
+    background: #FFF;
+}
+
+header {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    height: 500px;
+    color: #FFF;
+    background-color: black;
+
+}
+
+header h1 {
+    font-weight: bold;
+    width: 500px;
+    position: absolute;
+    top: 0px;
+    left: 500px;
+    padding-top: 260px;
+}
+
+header h2 {
+    background-color: ;
+    position: absolute;
+    font-family: cursive;
+    margin-top: 70px;
+}
+
+header img{
+    position: absolute;
+    top: 100px;
+    height: 300px;
+    width: 100%;
+    overflow: hidden;
+    box-shadow:10px 10px 5px #888888;
+}
+
+nav{
+  position: absolute;
+  top: 70px;
+  right: 70px;
+  font-family: cursive;
+}
+
+nav ul li {
+list-style: none;
+float: left;
+}
+
+
+nav a {
+  color: white;
+  padding: 10px;
+}
+
+
+/*Social Media Nav position */
+#socialindex{
+    position: absolute;
+    top: 440px;
+    left: 840px;
+}
+
+#socialindex h3{
+  position: relative;
+  left: 30px;
+}
+
+/*control color of social media icons:*/
+#socialindex i{
+    position: absolute;
+    color: silver;
+}
+
+#socialindex a{
+  margin-right: 100px;
+}
+
+
+
+
+h2{
+    font-weight: 900;
+    margin-bottom: 0px;
+}
+
+h3{
+    font-weight: 700;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+h4{
+    font-weight: 400;
+    margin-top: 0px;
+}

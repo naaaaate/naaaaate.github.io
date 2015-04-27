@@ -1,0 +1,73 @@
+/*This CSS affects mainly the blog-template main page*/
+/*
+/*SocialBlog = social media icons:*/
+
+/*Socialmedia icons position */
+#socialblog{
+position: absolute;
+    top: 440px;
+    left: 840px;
+
+}
+
+
+#socialblog h3{
+
+}
+
+/*social media icon color:*/
+#socialblog i{
+    color: silver;
+    position: absolute;
+}
+
+#socialblog a{
+  margin-right: 100px;
+
+}
+
+.content {
+    width: 650px;
+    display: inline-block;
+    vertical-align: top;
+    padding: 50px;
+    position: relative;
+    top: 100px;
+    left: 50px;
+}
+
+aside {
+    width: 220px;
+    padding: 50px;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    top: 100px;
+    left: 50px;
+}
+
+aside ul li{
+    margin: 0 auto;
+    list-style: none;
+
+}
+
+aside a {
+  color: blue;
+  padding: 10px;
+}
+
+.post {
+    padding-bottom: 100px;
+}
+
+.post p {
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+h1{
+    font-family: cursive;
+    font-size: 25px;
+}
+

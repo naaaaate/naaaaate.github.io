@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>"Ruby vs JavaScript"</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../stylesheets/default.css">
+  <link rel="stylesheet" type="text/css" href="../stylesheets/blog-stylesheet.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <!--Need stylesheet below for code to appear in html. uses <pre> or <code> tags w
+  class = "prettyprint" -->
+  <link rel="stylesheet" type="text/css" href="../stylesheets/highlighter/prettify.css">
+</head>
+
+<body>
+
+  <div id="wrapper">
+    <header>
+      <img src="./sfbridge.jpg" />
+      <!--<h1>Nate Blog</h1> -->
+    </header>
+    <nav>
+         <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="./blog-template.html">Blog</a></li>
+          <li><a href="#">Portfolio</a></li>
+          <li><a href="#">Contact Me</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+      <div class="post">
+        <h2>Ruby Classes vs Javascript Constructor Functions</h2>
+        <h3>A brief tutorial on Ruby Classes & JavaScript Constructors</h3>
+        <h4>4/12/15</h4>
+          <p>
+            This week I want to take a look at the slight differences between Javascript Constructor Functions and Ruby Classes. You may or may not already know that JavaScript does not contain any classes. Furthermore, in case you didn't know, classes are a great way to group similar things. So when you hear classes, think of a grouping of things like humans, animals, tools, etc.. Let's take a look at some of the key differences between Ruby Classes and Javascript constructors.
+          </p>
+          <br>
+          <p>
+            In Ruby we created classes as a way to set a blueprint for creating objects of that class. Put another way: we made a factory that builds objects of whatever that factory is. So if our factory is a car factory, the object that would come out of our factory is a car object. Now, in Javascript, we do not have the luxury of just creating a class factory, if you will... Instead, we have to actually create what's called a Function Constructor, that will create an object with properties that we input. This is very similiar to creating a Class and inside of its initialize method we set variables equal to whatever arguments we pass into the class at the time we create the new class.
+            <br>
+            So in JavaScript, let's setup a function constructor that will create many objects of this from. Let's take a look at how we would create an athlete function constructor that creates atheletes with different names and properties..
+            <pre>
+              function Athlete(name, age, sport){
+                this.name = name;
+                this.age = age;
+                this.sport = sport;
+              }
+
+              var nate = new Athlete("Nathan", 30, "Basketball");
+            </pre>
+            As you can see in this example I have created a function constructor called Athlete. It takes in the parameters, name, age, and sport. At the bottom when we initialize or create a new athelete object called: nate, we do so with the new keyword, a call to Athlete constructor, and we pass in the arguments that match the parameters we set.
+            <br>
+            So, now there is an object called nate that has certain properties we can access by calling using the dot notation and the name of the property. For example..
+            <pre>
+              console.log(nate.name + "is" + nate.age + "years old and likes to play: " + nate.sport);
+
+            </pre>
+            This simple console.log statement will print out to the console: "Nathan is 30 years old and likes to play: Basketball.""
+            <br>
+            Now you can kind of see the importance and benefits of creating a constructor function this way, because it allows us to create multiple athletes with different names, age, and sports that they play and we can use them in a program and access them simply by calling their object name, dot, their property name.
+            <br>
+          </p>
+          <br>
+          <p>
+            That touches on some of the basic differences between JavaScript Constructor Functions and Ruby Classes. Yes they are similar in a way, but overall they differ in the way they create objects in their syntax. Ruby classes pass in new attributes with the initialize method and calls them with attribute accessors, readers and writers, and Javascript passes in new properties with the Function Constructor creation and calls them with the object.property syntax.
+            I hope this tutorial has helped you to better understand the main difference between Ruby Classes and Javascript Constructor Functions.
+            Thanks for reading!
+            <br>
+            ~Nate
+          </p>
+
+
+
+
+      </div>
+    </div>
+
+    <aside>
+      <h2>Recent Blog Posts</h2>
+       <ul>
+        <li><a href="./t1-git-blog.html">Blog Post 1</a></li>
+        <li><a href="./c1-chefs-kitchen.html">Blog Post 2</a></li>
+        <li><a href="./t2-css-design.html">Blog Post 3</a></li>
+        <li><a href="./t3-arrays-hashes.html">Blog Post 4</a></li>
+        <li><a href="./c3_thinking-style.html">Blog Post 5</a></li>
+        <li><a href="./t4-enumerable-methods.html">Blog Post 6</a></li>
+        <li><a href="./c4-tech-issues.html">Blog Post 7</a></li>
+        <li><a href="./t5-ruby-classes.html">Blog Post 8</a></li>
+        <li><a href="./c5-feedback.html">Blog Post 9</a></li>
+        <li><a href="./t6-oop-concepts.html">Blog Post 10</a></li>
+        <li><a href="./c6-stereotype-threat.html">Blog Post 11</a></li>
+        <li><a href="./t7-JavaScript.html">Blog Post 12</a></li>
+        <li><a href="./c7-values.html">Blog Post 13</a></li>
+        <li><a href="./t8-tech.html">Blog Post 14</a></li>
+        <li><a href="./c8-conflict.html">Blog Post 15</a></li>
+        <li><a href="./c9-questions.html">Blog Post 16</a></li>
+      </ul>
+    </aside>
+  <!--Ends Wrapper Div -->
+  </div>
+  <!--Need 2 script tags below for pre or code tags to show code in html-->
+  <script src="../stylesheets/highlighter/prettify.js"></script>
+  <script>prettyPrint();</script>
+</body>
+</html  -->

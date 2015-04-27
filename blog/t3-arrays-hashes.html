@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Arrays vs Hashes</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../stylesheets/default.css">
+  <link rel="stylesheet" type="text/css" href="../stylesheets/blog-stylesheet.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <!--Need stylesheet below for code to appear in html. uses <pre> or <code> tags w
+  class = "prettyprint" -->
+  <link rel="stylesheet" type="text/css" href="../stylesheets/highlighter/prettify.css">
+</head>
+
+<body>
+
+  <div id="wrapper">
+    <header>
+      <img src="./sfbridge.jpg" />
+      <!--<h1>Nate Blog</h1> -->
+    </header>
+    <nav>
+         <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="./blog-template.html">Blog</a></li>
+          <li><a href="#">Portfolio</a></li>
+          <li><a href="#">Contact Me</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+      <div class="post">
+        <h2>Arrays vs Hashes</h2>
+        <h3>A Brief Overview of Arrays and Hashes</h3>
+        <h4>3/14/15</h4>
+          <p>
+            This week we are going to talk a little bit about Arrays vs Hashes and
+            will find out the similarities and differences between the two and when we would use one over the other.
+          </p>
+          <p>
+            Lets start by looking at Arrays: <br>
+            If you are new to programming, please simply think of an array as a container that holds items inside of it. There are many types of containers that are there to hold anything you want: sugar, spices, soups for smaller containers, and clothes, shoes, tools for larger containers. The point here is that containers hold things.  Arrays work the same way.
+            Arrays can hold object of any type: strings, booleans, integers, floats, other arrays, and so on..  The great thing about arrays is that they order the objects that are entered into the container so that you can pull out any object if you know its index or number in that container. One thing to note though: An Array's index starts at Zero and not One.
+            That basically means that to call the first element in your array, you would have to specify index zero (like this: a[0] - calls first element in array) and not like this: a[1].
+          </p>
+          <p>
+            Here are a couple ways to create a new array and add things to it: <br>
+            1. Array.new Method: <br>
+            <pre>
+              a = Array.new
+              a[0] = "first"
+            </pre>
+
+            This will first create a new array. Second, it will add the string: "first" to the first element in the array. Remember: Array's have a zero index which means you start counting from 0 and not 1. So to refer to the first element in the array "a", you would say: a[0]. To refer to the second element in array "a", you would say: a[1] , and so on..
+          </p>
+          <p>
+            2. The Literal-Constructor array method: <br>
+            <pre>
+              a = []
+              a= [1,2,'three', 4, true]
+            </pre>
+            The first line creates a new array. The second line creates a new array and adds elements into it. This is a very convenient way to create an array.
+          </p>
+          <p>
+            Here are a few ways to retrieve and remove elements from an array: <br>
+            1. .shift and .pop - will shift items to the left and remove the first element.
+
+            <pre>
+              a = [1,2,3,4,5]
+              a.shift(1)
+              print a
+              a.pop(2)
+              print a
+            </pre>
+            Here's what is happening:
+            <ol>
+              <li>An array called a is set to: 1,2,3,4,5 </li>
+              <li>a.shift(1) will shift off to the left the first value. </li>
+              <li>a is printed out: 2,3,4,5 </li>
+              <li>a.pop(2) will pop off the last 2, bc we told it pop 2 off the end.</li>
+              <li>a prints out remaining element: 2,3 </li>
+            <br>
+            2. .unshift and .push - will add a new value to the end of your array:
+            <pre>
+              a = [1,2,3,4,5]
+              a.unshift(0)
+              print a
+              a.push(6,7,8)
+              print a
+            </pre>
+            Here's what is happening:
+            <ol>
+              <li>An array called a is set to: 1,2,3,4,5 </li>
+              <li>a.unshift(0) will add 0 to the beginning of your array </li>
+              <li>a is printed out: 0,1,2,3,4,5 </li>
+              <li>a.push(6,7,8) will add 6,7,8 to end of array</li>
+              <li>a prints out: 0,1,2,3,4,5,6,7,8 </li>
+            </ol>
+          </p>
+          <br><br>
+
+          <p>
+            What are hashes then?<br>
+            Hashes are containers as well! They store objects but in what is known as a key value pair. Now if that's confusing, please simply think of a hash as a dictionary. Dictionaries have a key/value pair as well. When you look up a word (the Key), it shows you the definition right there (the Value). Now instead of having to know what an objects number is to return it in your code (ie: like an array), all you need to know is the name of the key and its value will be returned to you. This makes it a lot more convenient when trying to organize code and call certain specific values when the amount of keys begin to grow and grow. For instance, think of keys on your key ring.. if you had 2 or 3 keys, knowing which is which would not be hard, but if you had 100 or 1000 keys on your key ring, things might start getting a little confusing.
+          </p>
+          <p>
+            Now, please note that: any key and any value can be any Ruby object. And as stated earlier, you can lookup any object value based on the name of its key. Also note that the correct way to assign a key to its value is to use the: "=>" operator.
+            <br>
+            Lets look at some examples of creating hashes and adding key/value pairs to it.
+          </p>
+          <p>
+            1. This is how to create a hash and add values to it:
+            <pre>
+              h = {}
+              or
+              h = Hash.new
+
+              h["New York"] = "NY"
+              h["Florida"] = "FL"
+              h["Lousiana"] = "LA"
+            </pre>
+               Here's what is happening:
+            <ol>
+              <li>A Hash called "h" is created w {} called literal constructor </li>
+              <li>can also create with the Hash.new method call </li>
+              <li>The key value: "New York" is set to abbreviation value: "NY" </li>
+              <li>The key value: "Florida" is set to abbreviation value: "FL"</li>
+              <li>The key value: "Louisiana" is set to abbreviation value: "LA"</li>
+            </ol>
+          </p>
+          <p>
+            Finally, lets take a look at how to retrieve values from a hash:<br>
+            1. [] method or .fetch method:<br>
+            To retrieve the abbreviation NY from the "h" hash and assign it to a variable:
+             <pre>
+             NY_abbr = h["New York"]
+             or
+             NY_abbr = h.fetch("New York")
+            </pre>
+               Here's what is happening:
+            <ol>
+              <li>We are using the bracket [] method which is prob most popular to retrieve the value stored in the "New York" key.</li>
+              <li>or we can use the fetch method to get the value stored in the "New York" key. </li>
+            </ol>
+            Please note: either method that use, you still need to know the key name to get its value.
+          </p>
+          <p>
+            That sums up a breif introduction to hashes and arrays, and how to operate within them. I personally feel that you would use one over the other depending on the level of detail you would need for a list. For example: If you were creating a method that took in a number, and multiplied itself by every number below it till it got to 0, you would need to first subtract that number by 1 till you had all the numbers ordered in a list. But where would you store those numbers that you extracted? Thats right.. an array! No need for details of creating a key and setting it to a value for each number, because you want a quick and easy solution here. But if you were creating a movie type method that looked up a movie title by main actor, then you would want to use a hash because it is way more detailed and easier to return that value of the movie for you.
+          </p>
+          <p>
+            I hope this tutorial on Hashes vs Arrays helped you to better understand what hashes and arrays are, what the differences between them are, how to use them, and what scenarios to use each in.<br>
+            Thanks,<br>
+            ~Nate
+          </p>
+
+
+
+
+      </div>
+    </div>
+
+    <aside>
+      <h2>Recent Blog Posts</h2>
+       <ul>
+        <li><a href="./t1-git-blog.html">Blog Post 1</a></li>
+        <li><a href="./c1-chefs-kitchen.html">Blog Post 2</a></li>
+        <li><a href="./t2-css-design.html">Blog Post 3</a></li>
+        <li><a href="./t3-arrays-hashes.html">Blog Post 4</a></li>
+        <li><a href="./c3_thinking-style.html">Blog Post 5</a></li>
+        <li><a href="./t4-enumerable-methods.html">Blog Post 6</a></li>
+        <li><a href="./c4-tech-issues.html">Blog Post 7</a></li>
+        <li><a href="./t5-ruby-classes.html">Blog Post 8</a></li>
+        <li><a href="#./c5-feedback.html">Blog Post 9</a></li>
+        <li><a href="./t6-oop-concepts.html">Blog Post 10</a></li>
+        <li><a href="./c6-stereotype-threat.html">Blog Post 11</a></li>
+        <li><a href="./t7-JavaScript.html">Blog Post 12</a></li>
+        <li><a href="./c7-values.html">Blog Post 13</a></li>
+        <li><a href="./t8-tech.html">Blog Post 14</a></li>
+        <li><a href="./c8-conflict.html">Blog Post 15</a></li>
+        <li><a href="./c9-questions.html">Blog Post 16</a></li>
+      </ul>
+    </aside>
+  <!--Ends Wrapper Div -->
+  </div>
+  <!--Need 2 script tags below for pre or code tags to show code in html-->
+  <script src="../stylesheets/highlighter/prettify.js"></script>
+  <script>prettyPrint();</script>
+</body>
+</html  -->

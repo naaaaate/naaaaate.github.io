@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CSS</title>
+  <meta charset="UTF-8">
+
+  <link rel="stylesheet" type="text/css" href="../stylesheets/default.css">
+  <link rel="stylesheet" type="text/css" href="../stylesheets/blog-stylesheet.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+  <div id="wrapper">
+    <header>
+      <img src="./sfbridge.jpg" />
+      <h1>CSS Design</h1>
+    </header>
+    <nav>
+         <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="./blog-template.html">Blog</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact Me</a></li>
+        </ul>
+    </nav>
+    <div class="content">
+      <div class="post">
+        <h2>Inline vs Inline-block.</h2>
+        <h2>Understanding the difference in HTML Display Properties.</h2>
+        <h4>3/8/15</h4>
+          <p>
+
+          Today I want to clear up the differences between an inline block element and an inline element.
+          For starters if you’re new to programming in html and css please note that you have elements that you use to design your page. Elements can be (div, p, h1, a, etc..) tags.  Now display properties such as: inline, inline-block and block will make these elements show up on the webpage in different ways. Today I’m going to show you a few examples of what these differences are, how each element is affected when you set it to the different properties and how it affects the page and everything around it.
+          </p>
+          <p>
+          Lets look at inline elements first.
+          Inline elements do exactly as their name says: they stay in the same line as its surrounding text, paragraphs, pictures etc.. Whatever is next to it, will be on the same line as this inline element. Another way of saying it is: the inline-element stays in the same left to right "flow" of the document, from line to line of the doc.
+         </p>
+         <p>
+          <img src="./inline blog imgs/inlineBefore.jpg" />
+        </p>
+        <p>
+          <img src="./inline blog imgs/inlineAfter.jpg" />
+        </p>
+         <p>Now a few things to note about inline elements are:
+          1. when u declare an element as inline, it will NOT start a
+          new line after it. Everything just remains the same. Some
+          elements like block elements always start a new line after it as
+          Block elements don’t like other elements and objects on the
+          same line as itself, but not inline elements.. with
+          inline elements, everything will still be on the same line.
+          2. You cannot set its height and width (the inline element will only
+          be as big as the content inside of it).  Also, when it comes to margins think left and right… only the left and right margins expand when u set them, the top and bottom margins stay the same.
+          3. Finally, when it comes to padding, i’ve found that: only the bottom, left and right padding inside the element will expand or decrease. The top is not affected.
+          </p>
+          <p>
+          Lets look at block elements:
+          For block elements, think of Legos you can stack on top of one another. Block elements will stack on top of each other meaning they will not allow other elements to be by their side. You can define certain height and width for blocks, however even if you set a width to a block element, it still will not allow any other elements to be by its side. They like their own space which means other elements will have to get their own line in the html doc.
+          When you set its margin and padding, all four sides (top, bottom, left and right) will either expand or decrease.
+          One more thing to note is blocks automatically take the entire width of the screen if u don’t set an actual width.
+          Look at the before and after screenshots of blocks..
+        </p>
+        <p>
+          <img src="./inline blog imgs/BlockBefore.jpg" />
+        </p>
+        <p>
+          <img src="./inline blog imgs/BlockAfter.jpg" />
+        </p>
+        <p>
+          Note how the margins will create space between the other elements above and below it (remember nothing is allowed on its side) where as inline elements only created space bt elements on its own line (the left and right of it).
+          Also take note of the padding of a block.. the top, bottom, left, and right padding inside will expand or decrease if u set its properties.
+        </p>
+        <p>
+          Finally, lets take a look at inline-blocks: <br>
+          Rememeber with inline elements: the height and width are not affected when u set it, only the space on the left and right of it will move when u set them (aka: Margins), and inside of it (aka: Padding), only the left, right, and bottom will expand or decrease if you set its properties.
+          Inline-block elements have characteristics of both blocks and inline elements. <br>
+          Lets look at some examples: <br>
+        </p>
+          <p>
+          <img src="./inline blog imgs/inlineBlockBefore.jpg" />
+        </p>
+        <p>
+          <img src="./inline blog imgs/inlineBlockAfter.jpg" />
+        </p>
+        <p>
+          They still do not start new lines. Everything stays in the same flow of the document and elements and text and pictures will remain on the left and right of it like a happy family.
+          Also, just like blocks, their height and width can be adjusted, as well as all sides of their margins and paddings.
+          So the main difference between inline and inline blocks is that with inline-blocks: <br> the actual element itself will change, and at the same time allow other elements and objects to be on the same line as it. It does not make other elements get their own line. And with regular inline elements:
+          <br>
+          The element does not change its height or width, and only left and right margins and padding can be expanded or decreased if you set them. (Also bottom padding changes with inline elements.)
+        </p>
+        <p>
+          In conclusion, notice the differenes between Inline-Block vs Block elements and Inline-Block vs regular Inline elements. This pic shows the diff between an inline-block(box1) vs a block (box2):
+        </p>
+        <p>
+          <img src="./inline blog imgs/InlineBlockVSBlock.jpg" />
+        </p>
+        <p>
+          Note: margin, padding height and width expanded, but block is forced to get its own line bc blocks like their own space.
+        </p>
+        <p>
+        This last pic shows the diff between an inline-block (box1) vs an inline element(box2):
+      </p>
+      <p>
+      <img src="./inline blog imgs/InlineBlockVsInline.jpg" />
+      </p>
+      <p>
+          Note: margin, padding, height, weight expanded on inline box, however inline element stayed the same.
+          Also both elements are on same line.<br>
+          I hope this tutorial has cleared up any confusion between Display properties of HTML Elements and that you can now distinguish between Inline elements and Inline-Block elements. <br>
+          Thanks for reading! <br>
+           ~Nate
+      </p>
+
+      <!-- copy and paste as many sections as you want to add paragraphs -->
+      </div>
+    </div>
+
+    <aside>
+      <h2>Recent Blog Posts</h2>
+       <ul>
+        <li><a href="./t1-git-blog.html">Blog Post 1</a></li>
+        <li><a href="./c1-chefs-kitchen.html">Blog Post 2</a></li>
+        <li><a href="./t2-css-design.html">Blog Post 3</a></li>
+        <li><a href="./t3-arrays-hashes.html">Blog Post 4</a></li>
+        <li><a href="./c3_thinking-style.html">Blog Post 5</a></li>
+        <li><a href="./t4-enumerable-methods.html">Blog Post 6</a></li>
+        <li><a href="./c4-tech-issues.html">Blog Post 7</a></li>
+        <li><a href="./t5-ruby-classes.html">Blog Post 8</a></li>
+        <li><a href="./c5-feedback.html">Blog Post 9</a></li>
+        <li><a href="./t6-oop-concepts.html">Blog Post 10</a></li>
+        <li><a href="./c6-stereotype-threat.html">Blog Post 11</a></li>
+        <li><a href="./t7-JavaScript.html">Blog Post 12</a></li>
+        <li><a href="./c7-values.html">Blog Post 13</a></li>
+        <li><a href="./t8-tech.html">Blog Post 14</a></li>
+        <li><a href="./c8-conflict.html">Blog Post 15</a></li>
+        <li><a href="./c9-questions.html">Blog Post 16</a></li>
+      </ul>
+    </aside>
+
+</body>
+</html>
+
