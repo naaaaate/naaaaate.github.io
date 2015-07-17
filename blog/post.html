@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Post</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" type="text/css" href="../css/theme.css">
+  <link rel="stylesheet" type="text/css" href="../font-awesome/css/font-awesome.css">
+  <script src="../js/jquery-1.11.2.min.js"></script>
+  <script src="../js/prism.js"></script>
+  <script src="../js/custom.js"></script>
+  <script src="../js/slidebars.min.js"></script>
+</head>
+<body class="">
+
+<div id="sb-site">
+
+  <div class="region header">
+    <div class="region-inner">
+
+        <div class="sb-toggle-left"><i class="fa fa-bars"></i></div>
+        <ul class="menu">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="index.html">Blog</a></li>
+        </ul>
+
+    </div>
+  </div>
+
+  <div class="region featured" style="background-image: url('../images/fox.jpeg');">
+    <div class="region-inner">
+
+        <div class="page-title">
+          <h1></h1>
+          <h2></h2>
+        </div>
+
+    </div>
+  </div>
+
+  <div class="region middle">
+    <div class="region-inner">
+
+      <div class="content">
+
+        <div class="post">
+          <h1>Closures in JavaScript</h1>
+            <p class="post-type">Jul 14th 2015</p>
+
+            <p>This is my first blog post ever! So what better way to kick this thing off by starting with the simple concept of "Closures"! </p>
+
+            <p><strong>(jk..Calm Down.)</strong></p>
+
+            <p>While closures are a tricky subject to master at first, please note that it is not impossible. Let me start by giving the textbook definition of a closure and we'll go from there.  </p>
+
+            <p>Here is the definition of a closure on Mozilla's Developer network: </p>
+            <p>"Closures are functions that refer to independent (free) variables. In other words, the function defined in the closure 'remembers' the environment in which it was created."</p>
+
+            <p>Simple enough right???  </p>
+
+            <p>Yeah, if only it were that simple.. lets try to make some sense of this.</p>
+
+            <p>Hopefully you are familiar with functions in javascript. (if not, please familiarize yourself with functions, as they are used for everything in JavaScript) An easy way to think of a closure is a function that is inside of another function. That's it! So anytime you see another function inside of a function, just know that the inner function is just a word that some guy made up years ago and decided to call it a "closure". No Big Deal. </p>
+
+            <p>What makes a "Closure" so special (and maybe in some ways confusing) is that the inner function or "closure" has access to the outer function's variables. Crazy right?  So at a very high level without going into the in's and outs of why thats even possible, just know that a closure is a function inside of another function that has access to its parent functions variables.  Lets take a look at an example.</p>
+            <code>
+              say we have defined a function.. lets call it banana...
+
+              var banana = function(x){
+                var count = x;
+
+                return bananaSplit = function(){
+                  console.log("you have", count, "bananas");
+                }
+              }
+
+              var nate = banana(23);
+              nate();
+
+            </code>
+              <p>the Main takeaways to note are that: 1. the inner function is the closure.  2.  bananaSplit has access to the variable count in the parent function.  3. I'm calling the banana function and setting it equal to var nate. the way it works is: banana(23) will invoke the banana function and pass in 23 to the count variable. then it will return the bananaSplit function.. so you can think of it now as: var nate = bananaSplit function. 4. Now when i call nate() it will run or invoke the bananaSplit function which console logs how many bananas we have. and remember bananaSplit still has access to all the variables inside of the banana parent function.</p>
+            <p>Simple enough right???  </p>
+      </div>
+
+    </div>
+  </div>
+  <!-- End Middle -->
+</div>
+<!-- End Menu Wrapper -->
+
+<div class="sb-slidebar sb-left sb-momentum-scrolling">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="">Blog</a></li>
+    </ul>
+</div>
+
+</body>
+</html>

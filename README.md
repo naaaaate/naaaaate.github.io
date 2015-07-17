@@ -1,2 +1,5 @@
-# naaaaate.github.io
-MY DBC GitHub Phase 0 REPO!
+# DBC Portfolio Template
+
+A simple Portfolio template to use on your github.io
+
+
