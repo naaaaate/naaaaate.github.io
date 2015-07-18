@@ -6,17 +6,24 @@
   <link rel="stylesheet" type="text/css" href="../css/style.css">
   <link rel="stylesheet" type="text/css" href="../css/theme.css">
   <link rel="stylesheet" type="text/css" href="../font-awesome/css/font-awesome.css">
+
+  <link rel="stylesheet" href="../css/default.css">
+  <link rel="stylesheet" href="../css/tomorrow-night-bright.css">
+
+
   <script src="../js/jquery-1.11.2.min.js"></script>
   <script src="../js/prism.js"></script>
   <script src="../js/custom.js"></script>
   <script src="../js/slidebars.min.js"></script>
+  <script src="../js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body class="">
 
-<div id="sb-site">
+  <div id="sb-site">
 
-  <div class="region header">
-    <div class="region-inner">
+    <div class="region header">
+      <div class="region-inner">
 
         <div class="sb-toggle-left"><i class="fa fa-bars"></i></div>
         <ul class="menu">
@@ -24,45 +31,45 @@
           <li><a href="index.html">Blog</a></li>
         </ul>
 
+      </div>
     </div>
-  </div>
 
-  <div class="region featured" style="background-image: url('../images/fox.jpeg');">
-    <div class="region-inner">
+    <div class="region featured" style="background-image: url('../images/fox.jpeg');">
+      <div class="region-inner">
 
         <div class="page-title">
           <h1></h1>
           <h2></h2>
         </div>
 
+      </div>
     </div>
-  </div>
 
-  <div class="region middle">
-    <div class="region-inner">
+    <div class="region middle">
+      <div class="region-inner">
 
-      <div class="content">
+        <div class="content">
 
-        <div class="post">
-          <h1>Closures in JavaScript</h1>
+          <div class="post">
+            <h1>Closures in JavaScript</h1>
             <p class="post-type">Jul 14th 2015</p>
 
-            <p>What better way to kick this thing off by starting with the simple concept of "Closures"! </p>
+            <p>What better way to kick this blog off than by starting with the simple concept of: "Closures" ! </p>
 
             <p><strong>(jk.. maybe not so simple..Calm Down.)</strong></p>
 
             <p>
-              At Dev Bootcamp, you recieve a somewhat high level view of many topics. One being "Closures" within JavaScript. So I wanted to explore this concept a little more. I am currently going thru the "Front End Masters" course with a few cohort mates from Dev Bootcamp so a lot of my tech blog topics will be drawn from there.. Anyways, lets dive deep...
+              At Dev Bootcamp, you recieve a high level view of many technical concepts, one of them being "Closures" within JavaScript. So, when I graduated, I wanted to explore this concept a little more. (I am currently going thru the "Front End Masters" course with a few cohort mates from Dev Bootcamp so a lot of my tech blog topics will be drawn from there..) Anyways, lets dive deep...
             </p>
             <p>
-            While closures are a tricky subject to master, please note that it is not impossible by any means. I'll admit, when a classmate first tried explaining this concept to me, I wanted to run away and never look at closures again.. So  if you are feeling anywhere remotely close to this when talking about closures, don't give up! It will eventually come to you!
+              While closures are a tricky subject to master, please note that it is not impossible by any means. I'll admit, when a classmate first tried explaining this concept to me, I wanted to run away and never look at closures again.. So  if you are feeling anywhere remotely close to this when talking about closures, don't give up! It will eventually come to you!
             </p>
             <p>
-            Let me start by giving the textbook definition of a closure and we'll go from there...
+              Let me start by giving the textbook definition of a closure and we'll go from there...
             </p>
 
             <p>
-            Here is the definition of a closure on Mozilla's Developer network:
+              Here is the definition of a closure on Mozilla's Developer network:
             </p>
             <p>"Closures are functions that refer to independent (free) variables. In other words, the function defined in the closure 'remembers' the environment in which it was created."</p>
 
@@ -75,53 +82,71 @@
             <p>What makes a "Closure" so special (and maybe in some ways confusing) is that the inner function or "closure" has access to the outer function's variables. Crazy right?  So at a very high level without going into the in's and outs of why thats even possible, just know that a closure is a function inside of another function that has access to its parent function's variables.  Lets take a look at an example.
             </p>
             <p>
-              say we have defined a function.. lets call it banana...
+              say we have defined a function..<br> Lets call it banana. Inside the function banana, we return another function called bananaSplit..
             </p>
-            <code>
+          <pre>
+            <code class="javascript">
 
-              var banana = function(x){ <br>
-                var count = x;<br>
+              var banana = function(x){
+                var count = x;
 
-                return bananaSplit = function(){<br>
-                  console.log("you have", count, "bananas");<br>
-                }<br>
-              }<br>
-
-              <strong>var nate = banana(23); </strong><br>
+                return bananaSplit = function(){
+                console.log("you have" + count + "bananas");
+                }
+              }
             </code>
-              <p>//on the right hand side of the equal sign, banana function will be invoked (or ran) and the number 23 will be passed as an argument to the function.  Whatever the function banana returns will be returned to the right hand side of the equal sign. in this case its the: bananaSplit function.</p>
-
-            <code>
-              <strong>nate();</strong><br>
-            </code>
-            <p>
-            //now we invoke the function nate which is pointing to the function bananaSplit().
-
+          </pre>
+          <p>
+            //Now lets create a variable called nate and set it equal to what the banana function returns..
           </p>
-              <p>The Main takeaways to note are that: <br>
-                1. the inner function is the closure.  <br>
-                2.  bananaSplit has access to the variable called: "count" in the parent function.  <br>
-                3. I'm calling the banana function and setting it equal to var nate. the way it works is: banana(23) will invoke the banana function and pass in 23 to the count variable. then it will return the bananaSplit function.. so you can think of it now as: var nate = bananaSplit function. <br>
-                4. Now when I call nate() it will run or invoke the bananaSplit function which console logs how many bananas we have. and remember bananaSplit still has access to all the variables inside of the banana parent function.</p>
-            <p>Simple enough right???  </p>
-            <p>Again, I know closures are not a simple concept that most people can grasp at first glance, but with enough practice you will get it soon enough!</p>
-            <p>If you have any questions or comments please hit me up on twitter (@n8leedbc)! thanks! </p>
-            <p> -Nate </p>
+          <pre>
+            <code>
+            <strong>var nate = banana(23); </strong>
+          </code>
+        </pre>
+        <p>//Now when we call the banana function above, on the right hand side of the equal sign, the banana function will be invoked (or run) and the number 23 will be passed as an argument to the function.  Whatever the function banana returns will be returned to the right hand side of the equal sign. in this case, the banana function literally returns another function called: bananaSplit.</p>
+
+        <pre>
+        <code>
+          <strong>nate();</strong>
+        </code>
+      </pre>
+        <p>
+          //As you can see above, we invoke (or run) the function nate which is pointing to the function bananaSplit(). But remember, the function bananaSplit has access to the variable count inside of the banana function.
+        </p>
+
+        <pre><code>
+          //you have 23 bananas.
+        </pre></code>
+
+        <p>
+          The output from the bananaSplit function is a console.log that says: "you have 23 bananas".
+        </p>
+
+        <p>The Main takeaways to note are that: <br>
+          1. The inner function is the closure.  <br>
+          2. bananaSplit has access to the variable called: "count" in the parent function.  <br>
+          3. I'm calling the banana function and setting it equal to var nate. the way it works is: banana(23) will invoke the banana function and pass in 23 to the count variable. then it will return the bananaSplit function.. so you can think of it now as: var nate = bananaSplit function. <br>
+          4. Now when I call nate() it will run or invoke the bananaSplit function which console logs how many bananas we have. and remember bananaSplit still has access to all the variables inside of the banana parent function.</p>
+          <p>Simple enough, right???  </p>
+          <p>Again, I know closures are not a simple concept that most people can grasp at first glance, but with a little practice you will get it soon enough!</p>
+          <p>If you have any questions or comments please hit me up on twitter (@n8leedbc)! thanks! </p>
+          <p> -Nate </p>
+
+        </div>
 
       </div>
-
     </div>
+    <!-- End Middle -->
   </div>
-  <!-- End Middle -->
-</div>
-<!-- End Menu Wrapper -->
+  <!-- End Menu Wrapper -->
 
-<div class="sb-slidebar sb-left sb-momentum-scrolling">
+  <div class="sb-slidebar sb-left sb-momentum-scrolling">
     <ul>
       <li><a href="/">Home</a></li>
       <li><a href="">Blog</a></li>
     </ul>
-</div>
+  </div>
 
 </body>
 </html>
