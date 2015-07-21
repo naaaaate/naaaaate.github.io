@@ -62,14 +62,11 @@
               At Dev Bootcamp, you recieve a high level view of many technical concepts, one of them being "Closures" within JavaScript. So, when I graduated, I wanted to explore this concept a little more. (I am currently going thru the "Front End Masters" course with a few cohort mates from Dev Bootcamp so a lot of my tech blog topics will be drawn from there..) Anyways, lets dive deep...
             </p>
             <p>
-              While closures are a tricky subject to master, please note that it is not impossible by any means. I'll admit, when a classmate first tried explaining this concept to me, I wanted to run away and never look at closures again.. So  if you are feeling anywhere remotely close to this when talking about closures, don't give up! It will eventually come to you!
-            </p>
-            <p>
               Let me start by giving the textbook definition of a closure and we'll go from there...
             </p>
 
             <p>
-              Here is the definition of a closure on Mozilla's Developer network:
+              According to Mozilla's Developer network, the definition of a closure is:
             </p>
             <p>"Closures are functions that refer to independent (free) variables. In other words, the function defined in the closure 'remembers' the environment in which it was created."</p>
 
@@ -77,9 +74,9 @@
 
             <p>Yeah, if only it were that simple.. lets try to make some sense of this.</p>
 
-            <p>Hopefully you are familiar with functions in javascript. (if not, please familiarize yourself with functions, as they are used for just about everything in JavaScript!) An easy way to think of a closure is a function that is inside of another function. That's it! So anytime you see another function inside of a function, just know that the inner function is just a word that some guy made up years ago and decided to call it a "closure". No Big Deal. </p>
-
-            <p>What makes a "Closure" so special (and maybe in some ways confusing) is that the inner function or "closure" has access to the outer function's variables. Crazy right?  So at a very high level without going into the in's and outs of why thats even possible, just know that a closure is a function inside of another function that has access to its parent function's variables.  Lets take a look at an example.
+             <p>Hopefully you are familiar with functions in javascript. (if not, please familiarize yourself with functions, as they are used for everything in JavaScript) An easy way to think of a closure is a function that is "RETURNED" inside of another function. That's it! So anytime you see another function inside of a function, just know that the inner function is just a word that some guy made up years ago and decided to call it a "closure". No Big Deal.
+             </p>
+            <p>What makes a "Closure" so special (and maybe in some ways confusing) is that the inner function or "closure" has access to the outer (parent) function's scope (in other words the variables and anything else defined in the outer (parent) function, even when that parent function ends. Crazy right?  So at a very high level without going into the in's and outs of why thats even possible, just know that a closure is a "RETURNED" function inside of another function that has access to its parent functions scope (the variables, etc..), even when that parent function ends.  Lets take a look at an example.
             </p>
             <p>
               say we have defined a function..<br> Lets call it banana. Inside the function banana, we return another function called bananaSplit..
