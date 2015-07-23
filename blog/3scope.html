@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Post</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" type="text/css" href="../css/theme.css">
+  <link rel="stylesheet" type="text/css" href="../font-awesome/css/font-awesome.css">
+
+  <link rel="stylesheet" href="../css/default.css">
+  <link rel="stylesheet" href="../css/tomorrow-night-bright.css">
+
+
+  <script src="../js/jquery-1.11.2.min.js"></script>
+  <script src="../js/prism.js"></script>
+  <script src="../js/custom.js"></script>
+  <script src="../js/slidebars.min.js"></script>
+  <script src="../js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- this will add github gist code snippets.. -->
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.1/gist-embed.min.js"></script>
+</head>
+<body class="">
+
+  <div id="sb-site">
+
+    <div class="region header">
+      <div class="region-inner">
+
+        <div class="sb-toggle-left"><i class="fa fa-bars"></i></div>
+        <ul class="menu">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="index.html">Blog</a></li>
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="region featured" style="background-image: url('../images/fox.jpeg');">
+      <div class="region-inner">
+
+        <div class="page-title">
+          <h1></h1>
+          <h2></h2>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="region middle">
+      <div class="region-inner">
+
+        <div class="content">
+
+          <div class="post">
+            <h1>Scope in JavaScript</h1>
+            <p class="post-type">Jul 22nd 2015</p>
+
+            <p>After watching a few hours of the Front End Masters Advanced Javascript series, I wanted to write a blog on some more of the basics of Javascript.  Today I want to discuss scope, what it is, and why its so important.
+            </p>
+            <p>
+              When I first heard about scope, a lot of questions came to mind, such as: What is it? When should I use it? How do I use it? etc..
+            </p>
+            <p>
+              Let me start by sharing my definition of scope within Javascript.  Scope to me refers to what is in your "personal space". Think of your desk at work or your bedroom at home. It's your personal space, and everything in that space belongs to you (or should belong to you..). The same can be said of scope within Javascript.  Think of Scope simply as the "personal space" where things like variables and other objects and methods more than likely belong to a function. I say "more than likely" because sometimes variables and functions can belong to the "GLOBAL" scope (the part of your program that is accessible to everything... google global scope if you are still confused).  As a side note: its important to note that functions are very important because they define their own scope. So anytime you see a function in Javascript just know that it has its own personal space within your program. Kind of simliar to how another sibling means they have their own personal space in the house. Also note that functions are first class citizens which means: they "support all the operations generally available to other entities. These operations typically include being passed as a parameter, returned from a function, and assigned to a variable." (Thanks <a href="https://en.wikipedia.org/wiki/First-class_citizen">Wikipedia!!!</a>). If that doesn't make any sense just know that functions can be passed into other functions, can be returned from other functions(read my <a href="2closures.html">blog on closures</a>), and can be assigned to a variable.
+            </p>
+            <p>
+              I realize I just rabbit-holed on functions but please note how essential it is to understanding functions and how they work. Anyways, back to scope.. As I said earlier, scope is just a functions "personal space", or the global program's "personal space".
+            </p>
+            <p>
+              The reason why its so important to understand scope is because as your programs grow, you want to know what variables are allowed to be called in a function or where you are allowed to call certain functions within the program. It all has to do with scope. Think of our room example: If there's an item that belongs to your sibling and it is in their room, then you are not allowed to use it because its not within your personal space. That's how scope works!
+            </p>
+            <p>
+              Ok, now that you're understanding scope a little better, lets look at some simple code examples..
+            </p>
+
+        <pre><code>
+          var foo = “bar”;  //this is in the global scope.
+
+          function bar() {
+            var foo = “magic”; //this is in the function bar's scope.
+          }
+
+          function baz(foo) {
+            foo = “banana”; //this is in the function baz's scope.
+            bam = “panda”; //this is in the global scope!!! ???
+          }
+
+        </pre></code>
+
+        <p>
+          As you can see in the code above, we have the first var foo in the global scope.  The second var foo is in teh function bar's scope, because remember functions define their own scope! Functions are special in Javascript. The third variable foo is defined in the parameter declaration where it says: "  function baz(foo) {  ".  Please note that just because you dont see a keyword: var, does not mean a variable foo is not being defined, it is implicitly being defined here.
+        </p>
+        <p>
+          Now, in the last line that says: bam = “panda”; the variable panda is actually being declared in the global scope at what's called "runtime". Let me explain...
+        </p>
+        <p>
+          If you're new to JavaScript, then just know that Javascript programs run in what I like to call 2 phases. When you first start your program, the first stage is known as the compiler phase. In the compiler phase, all of your code is being compiled (or in simpler terms, there is this thing called a compiler in Javascript that runs through your entire code and finds where you have typed the words: "var" and "function". When it finds these keywords, the compiler asks this question: "I have a declaration for a var called 'foo', what scope does he belong to?" It sees that it belongs to the global scope, so the compiler will register the var foo declaration, in the global scope (or personal space).
+        </p>
+        <p>
+          The second phase that runs is the runtime phase. So when you hear developers talk about runtime, they are referring to this phase after all the variables and functions have been declared and know which personal space they belong to. During runtime phase (in our example) is where the runtime will ask the global scope this question: "hey global scope, I have a left hand side (LHS because its on the left hand side of the equal sign) reference for the variable foo, have you heard of him?" .. The global scope responds with: "yes, you declared him a few microseconds ago" .. then it will hand us back a reference to the var foo and assign the value "bar" to it.
+        </p>
+        <p>
+          The only difference in the last function is when it asks the scope of the function baz: "hey scope of baz, I have an LHS reference for the variable bam, have you heard of him?" .. the scope of baz responds with: "No, because you never declared it with the keyword var during compile phase so it never got declared." .. then the runtime goes up to the next scope which in this case is the global scope and asks: "hey global scope, I have an LHS reference for the variable bam, have you heard of him?" .. the global scope respnds with: "Yes! I JUST NOW CREATED HIM!". So now the variable bam is declared in the global scope which means everyone has access to it. (if you still aren't understanding why the variable bam is a global scope just know that during phase 1 compiler phase, if there is NO var keyword in front of your variables, they do not get declared. But during runtime if the runtime comes across a variable with no keyword var in front of it, it asks, the scope if it knows it, when it gets back a "NO" it goes up to the next scope, then the next, all the way until it gets to the global scope where JavaScript does a somewhat weird thing and helps you out by just creating it right then and there. I know .. it doesn't make much sense, but that is how JavaScript operates.)
+        </p>
+          <p>So that in a nutshell is what scope in JavaScript is, and how it operates. If you have any questions or comments about this blog, please hit me up on twitter (@n8leedbc)! thanks! </p>
+          <p> -Nate </p>
+
+        </div>
+
+      </div>
+    </div>
+    <!-- End Middle -->
+  </div>
+  <!-- End Menu Wrapper -->
+
+  <div class="sb-slidebar sb-left sb-momentum-scrolling">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="">Blog</a></li>
+    </ul>
+  </div>
+
+</body>
+</html>
