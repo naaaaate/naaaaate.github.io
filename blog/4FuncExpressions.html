@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Post</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" type="text/css" href="../css/theme.css">
+  <link rel="stylesheet" type="text/css" href="../font-awesome/css/font-awesome.css">
+
+  <link rel="stylesheet" href="../css/default.css">
+  <link rel="stylesheet" href="../css/sunburst.css">
+
+
+  <script src="../js/jquery-1.11.2.min.js"></script>
+  <script src="../js/prism.js"></script>
+  <script src="../js/custom.js"></script>
+  <script src="../js/slidebars.min.js"></script>
+  <script src="../js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- this will add github gist code snippets.. -->
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.1/gist-embed.min.js"></script>
+</head>
+<body class="">
+
+  <div id="sb-site">
+
+    <div class="region header">
+      <div class="region-inner">
+
+        <div class="sb-toggle-left"><i class="fa fa-bars"></i></div>
+        <ul class="menu">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="index.html">Blog</a></li>
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="region featured" style="background-image: url('../images/fox.jpeg');">
+      <div class="region-inner">
+
+        <div class="page-title">
+          <h1></h1>
+          <h2></h2>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="region middle">
+      <div class="region-inner">
+
+        <div class="content">
+
+          <div class="post">
+            <h1>Function Declarations vs Expressions (for Beginners)</h1>
+            <p class="post-type">Jul 22nd 2015</p>
+
+            <p>
+              Today, I wanted to discuss Function Declarations and Function Expressions. (I know what you're thinking.."Function whaaa?!?!")... Stay with me..
+            </p>
+            <p>
+              As I mentioned in a previous <a href="3scope.html">blog</a>, Functions are very important in JavaScript! They create their own scope and are considered "First Class Citizens!" But lets take a deeper dive into what a function declaration is vs a Function Expression.
+            </p>
+            <p>
+              Simply put, a function declaration is when you declare a function and it is the first word in the statement. Think back to when we talked about declaring variables and functions and compiling them with the "Phase 1 JavaScript Compiler". Here's an example:
+              <pre><code>
+                function bar() {
+                  var foo = “magic”;
+               }
+              </pre></code>
+            </p>
+            <p>
+              This is a function declaration bc the keyword "function" is the first word in the statement. Now, lets compare that with a function expression: where the function keyword is not the first word in the statement:
+              <pre><code>
+                var foo = function bar() {
+                  var foo = “baz”;
+
+                  function baz(foo) {
+                    foo = bar;
+                    foo;
+                  }
+                  baz();
+                };
+            </pre></code>
+            </p>
+            <p>
+              Here we can see that in the first line, the keyword "function" is not the first word. It's actually being assigned to the var foo. Therefore this is a function expression.. More specifically though, its called a "Named Function Expression" bc after the keyword "function" there is a name: "bar". Sometimes you can have what's called an "Anonymous Function Expression" where a function expression is declared with no "name" after the keyword "function".
+            </p>
+            <p>
+              What's great about function expressions is that they can refer to themselves within themselves. (kind of how some people refer to themselves in the third person... which is kind of aggravating.) So within the function expression on the first line called "bar" , we can now refer to this function expression as we do here..              <pre><code>
+                //var foo = function bar() {
+                  //var foo = “baz”;
+
+
+                  //function baz(foo) {
+
+                    foo = bar;  -- here is where we refer to function expression bar.
+
+                    //foo;
+                  //}
+                  //baz();
+                //};
+                foo();
+                bar(); //Error!
+            </pre></code>
+            </p>
+          <p>
+            In fact, that is one of the defining characteristics of a function expression: that function expressions can refer to themselves within themselves and are not accessible outside of the function. So if you try to access the function expression bar by calling bar() in the global scope, you will get an error!
+          </p>
+         <p>
+          Now as I mentioned earlier, we could have an "Anonymous function expression" but it is better to use "Named Function Expressions" for 3 reasons:
+            <ol>
+              <li>
+                If theres no: "named expression" above (ie: function bar) you cannot refer to itself from inside of itself.
+              </li>
+              <li>
+              If there are errors in your code, then during the debugging phase, an anonymous function does you no good in trying to find the exact function where the issue occurs if there are multiple functions called: "anonymous".
+              </li>
+              <li>
+                A Named Function Expression will self document its code, by giving itself a name that helps you understand what its doing. So if we called it Handler, you would know that the function is handling some kind of event.
+              </li>
+            </ol>
+          </p>
+         <p>
+          So to recap: Function Expressions can refer to themselves insid of themselves (ie: people who refer to themselves in third person.. ie: "Smeegle"). Function Expressions can be anonymous or named, and finally: Named Function Expressions are better to use then Anonymous Function Expression. I really hope that helps in your understanding of Function Declarations vs Function Expressions.
+        </p>
+          <p>If you have any questions or comments about this blog, please hit me up on twitter (<a href="https://twitter.com/n8leeDBC">@n8leedbc</a>)! thanks! </p>
+          <p> -Nate </p>
+
+        </div>
+
+      </div>
+    </div>
+    <!-- End Middle -->
+  </div>
+  <!-- End Menu Wrapper -->
+
+  <div class="sb-slidebar sb-left sb-momentum-scrolling">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="">Blog</a></li>
+    </ul>
+  </div>
+
+</body>
+</html>
