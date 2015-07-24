@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Scope pt.2 - JS Behind the Scenes</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" type="text/css" href="../css/theme.css">
+  <link rel="stylesheet" type="text/css" href="../font-awesome/css/font-awesome.css">
+
+  <link rel="stylesheet" href="../css/default.css">
+  <link rel="stylesheet" href="../css/sunburst.css">
+
+
+  <script src="../js/jquery-1.11.2.min.js"></script>
+  <script src="../js/prism.js"></script>
+  <script src="../js/custom.js"></script>
+  <script src="../js/slidebars.min.js"></script>
+  <script src="../js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- this will add github gist code snippets.. -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.1/gist-embed.min.js"></script>
+</head>
+<body class="">
+
+  <div id="sb-site">
+
+    <div class="region header">
+      <div class="region-inner">
+
+        <div class="sb-toggle-left"><i class="fa fa-bars"></i></div>
+        <ul class="menu">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="index.html">Blog</a></li>
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="region featured" style="background-image: url('../images/fox.jpeg');">
+      <div class="region-inner">
+
+        <div class="page-title">
+          <h1></h1>
+          <h2></h2>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="region middle">
+      <div class="region-inner">
+
+        <div class="content">
+
+          <div class="post">
+            <h1>Scope pt.2 - JS behind the scenes. (for Beginners)</h1>
+            <p class="post-type">July 23rd 2015</p>
+            <p>
+              In my last post, we were looking at this piece of code:
+              <pre><code>
+              var foo = “bar”;  //this is in the global scope.
+
+              function bar() {
+                var foo = “magic”; //this is in the function bar's scope.
+              }
+
+              function baz(foo) {
+                foo = “banana”; //this is in the function baz's scope.
+                bam = “panda”; //this is in the global scope!!! ???
+              }
+          </pre></code>
+        </p>
+        <p>
+          Where the last line bam = "panda" looks like bam should be declared inside of function baz's scope. However, it's not! It's actually being declared inside of the global scope at: RUNTIME!.. Let's break it down..
+        </p>
+        <p>
+          If you're new to JavaScript, then just know that Javascript programs run in 2 phases. When you first start your program, the first stage is known as the compiler phase. In the compiler phase, all of your code is being compiled (or in simpler terms, there is this thing called a compiler in Javascript that runs through your entire code and finds where you have typed the words: "var" and "function". When it finds any of these keywords, the compiler asks this question: (in the case of our first "var foo" at the top).. "I have a declaration for a var called 'foo', what scope does he belong to?" It sees that it belongs to the global scope, so the compiler will register the var foo declaration, in the global scope (or personal space).
+        </p>
+        <p>
+          The second phase that runs is the runtime phase. So when you hear developers talk about runtime, they are referring to this phase after all the variables and functions have been declared and know which personal space they belong to. During runtime phase (in our example) is where the runtime will ask the global scope this question: "hey global scope, I have a left hand side (LHS is the abbreviation.. and LHS because its on the left hand side of the equal sign) reference for the variable foo, have you heard of him?" .. The global scope responds with: "yes, you declared him a few microseconds ago" .. then it will hand us back a reference to the var foo and assign the value "bar" to it.
+        </p>
+        <p>
+          The only difference in the last function is when it asks the scope of the function baz: "hey scope of baz, I have an LHS reference for the variable bam, have you heard of him?" .. the scope of baz responds with: "No, because you never declared it with the keyword var during compile phase so it never got declared." .. then the runtime goes up to the next scope which in this case is the global scope and asks: "hey global scope, I have an LHS reference for the variable bam, have you heard of him?" .. the global scope respnds with: "Yes! I JUST NOW CREATED HIM!". So now the variable bam is declared in the global scope which means everyone has access to it. (if you still aren't understanding why the variable bam is a global scope just know that during phase 1 compiler phase, if there is NO var keyword in front of your variables, they do not get declared. But during runtime if the runtime comes across a variable with no keyword var in front of it, it asks, the scope if it knows it, when it gets back a "NO" it goes up to the next scope, then the next, all the way until it gets to the global scope where JavaScript does a somewhat weird thing and helps you out by just creating it right then and there. I know .. it doesn't make much sense, but that is how JavaScript operates.)
+        </p>
+        <p>So that in a nutshell is what scope in JavaScript is, and how it operates. If you have any questions or comments about this blog, please hit me up on twitter (<a href="https://twitter.com/n8leeDBC">@n8leedbc</a>)! thanks! </p>
+        <p> -Nate </p>
+
+      </div>
+
+    </div>
+  </div>
+  <!-- End Middle -->
+</div>
+<!-- End Menu Wrapper -->
+
+<div class="sb-slidebar sb-left sb-momentum-scrolling">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="">Blog</a></li>
+  </ul>
+</div>
+
+</body>
+</html>
