@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>IIFE's </title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" type="text/css" href="../css/theme.css">
+  <link rel="stylesheet" type="text/css" href="../font-awesome/css/font-awesome.css">
+
+  <link rel="stylesheet" href="../css/default.css">
+  <link rel="stylesheet" href="../css/sunburst.css">
+
+
+  <script src="../js/jquery-1.11.2.min.js"></script>
+  <script src="../js/prism.js"></script>
+  <script src="../js/custom.js"></script>
+  <script src="../js/slidebars.min.js"></script>
+  <script src="../js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- this will add github gist code snippets.. -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.1/gist-embed.min.js"></script>
+</head>
+<body class="">
+
+  <div id="sb-site">
+
+    <div class="region header">
+      <div class="region-inner">
+
+        <div class="sb-toggle-left"><i class="fa fa-bars"></i></div>
+        <ul class="menu">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="index.html">Blog</a></li>
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="region featured" style="background-image: url('../images/fox.jpeg');">
+      <div class="region-inner">
+
+        <div class="page-title">
+          <h1></h1>
+          <h2></h2>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="region middle">
+      <div class="region-inner">
+
+        <div class="content">
+
+          <div class="post">
+            <h1>IIFE Patterns in JavaScript (for Beginners)</h1>
+            <p class="post-type">Jul 22nd 2015</p>
+
+            <p>
+              IIFE, IIFE, IIFE... such a funny name, yet probably one of the most popular JavaScript patterns used by developers. What is an IIFE? What is a pattern? Why do I need to know about any of this..?  So many great questions.. lets take a deep dive into IIFE's.
+
+            </p>
+            <p>
+              First of all, an IIFE is short for an: Immediately Invoked Function Expression. (Remember my blog on <a href="5FuncExpressions.html">Function Expressions</a> ?).  All an IIFE is, is a Function Expression (opposite of a function declaration) that is immediately run (or fancier word: 'invoked') at <a href="4ScopePt2.html">Runtime.</a>  So why would we ever want to use an IIFE?
+            </p>
+            <p>
+              To answer this question, remember that when developers say IIFE, they are referring to a pattern in JavaScript. Think of patterns like cookie cutters. When you use the cookie cutter, you have perfect looking cookies in the exact design you wanted. Furthermore, you keep using the cookie cutter because you know it will produce the same great results every single time.
+            </p>
+            <p>
+              The same can be said of the IIFE pattern, you know that by using this pattern you will get the same great results of a well organized JavaScript program. Now, the main thing you need to know about an IIFE is that an IIFE will take your function expression and make everything inside of it private! (in JavaScript, you'll find that its not a good idea to expose functions and variables unnecessarily to the outside global scope).  We'll look at some examples in a few, but if there's one point I want to get across to you that I wish someone would've told me, its exactly what I just mentioned: (in very basic terms) <strong>IIFE's make everything declared inside of it private! (remember the whole blog I wrote on the importance of <a href="3scope.html">scope?</a></strong> You do NOT want to make your functions and variables available for anyone to access.  It's the same reason you don't just leave your car doors unlocked with the windows down, or your front door wide open for anyone to walk inside.
+            </p>
+            <p>
+              Now, Lets look at some code:
+              <pre><code>
+                var foo = “foo”;
+
+                (function() {
+                  var foo = “foo2”;
+                  console.log(foo); //“foo2"
+                }) ();  //it immediately invokes itself here..
+
+              console.log(foo); //“foo”
+            </pre></code>
+          </p>
+          <p>
+            A few things to notice here:
+            <ol>
+              <li>The IIFE Syntax: notice how the second line of code, there is a function expression and not a function declaration. Again, it is a function expression because it begins with a parenthesis "(" and not the keyword: "function". </li>
+              <li>The parentheses "()" at the end of the function expression: This is what actually runs (or invokes immediately) the function expression at runtime. No need to call it from below your function like you may have seen in the past. (ie: nate() .. or foo() etc..</li>
+              <li>Privacy: Remember one of the MAIN reasons to use the IIFE pattern is for privacy. When you think IIFE think privacy! What does that mean, well.. look at the line inside of the function expression IIFE that says: "console.log(foo)".. it returns "foo2" because its calling the foo above it inside the IIFE. Now, look at the last line that says: "console.log(foo)" .. That line will return "foo" because it only has access to the global scope var foo and not the IIFE scope var foo.</li>
+              Again, please remember that we use the IIFE pattern to make its scope (or the personal space inside the Function Expression) private! Now we are also immediately invoking the Function expression so that there is no need to call it and expose its name to the public. If what I just said was confusing, let me try another way.. if we had a regular function:
+              <pre><code>
+              function nate() {
+                  var foo = “foo2”;
+                  console.log(foo); //“foo2"
+                }
+             </pre></code>
+             to call this function we would have to type:
+             <pre><code>
+              nate();
+             </pre></code>
+             Now if we had IIFE called nate it would look like this:
+             <pre><code>
+              (function nate() {
+                  var foo = “foo2”;
+                  console.log(foo); //“foo2"
+              })();
+             </pre></code>
+             Since an IIFE is immediately invoked at runtime, we do not have to manually type in nate(), because the IIFE is already invoked! Hope that helps clear things up about IIFE's.
+          </ol>
+
+          <p>So that is basically what an IIFE is and how it operates. When you think of an IIFE remember to think of 2 things: 1. Privacy and 2. Already unning. If you have any questions or comments about this blog, please hit me up on twitter (<a href="https://twitter.com/n8leeDBC">@n8leedbc</a>)! thanks! </p>
+          <p> -Nate </p>
+
+        </div>
+
+      </div>
+    </div>
+    <!-- End Middle -->
+  </div>
+  <!-- End Menu Wrapper -->
+
+  <div class="sb-slidebar sb-left sb-momentum-scrolling">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="">Blog</a></li>
+    </ul>
+  </div>
+
+</body>
+</html>
