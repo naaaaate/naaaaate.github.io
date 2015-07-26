@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>The 'this' Keyword </title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" type="text/css" href="../css/theme.css">
+  <link rel="stylesheet" type="text/css" href="../font-awesome/css/font-awesome.css">
+
+  <link rel="stylesheet" href="../css/default.css">
+  <link rel="stylesheet" href="../css/googlecode.css">
+
+
+  <script src="../js/jquery-1.11.2.min.js"></script>
+  <script src="../js/prism.js"></script>
+  <script src="../js/custom.js"></script>
+  <script src="../js/slidebars.min.js"></script>
+  <script src="../js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- this will add github gist code snippets.. -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.1/gist-embed.min.js"></script>
+</head>
+<body class="">
+
+  <div id="sb-site">
+
+    <div class="region header">
+      <div class="region-inner">
+
+        <div class="sb-toggle-left"><i class="fa fa-bars"></i></div>
+        <ul class="menu">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="index.html">Blog</a></li>
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="region featured" style="background-image: url('../images/fox.jpeg');">
+      <div class="region-inner">
+
+        <div class="page-title">
+          <h1></h1>
+          <h2></h2>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="region middle">
+      <div class="region-inner">
+
+        <div class="content">
+
+          <div class="post">
+            <h1>The 'this' keyword in JavaScript (for Beginners)</h1>
+            <p class="post-type">Jul 25th 2015</p>
+
+            <p>
+              This. Such a generic word right? What is 'this'? So glad you asked! Here's a textbook definition of the 'this' keyword: "Every function while executing, has a reference to its current execution context, called 'this'."  Furthermore, there are 4 rules for determining how the THIS keyword gets bound and they all depend on the "call site" of your function. The "call site" means the spot in your code where you are calling a function or executing a function with an open and closed parentheses “()" (ie: nate() ).
+            </p>
+            <p>
+              So just to re-iterate in layman's terms: How you call a function in your code, determines what scope or object the 'this' keyword refers to. Lets look at the 4 rules in a quick example, that determine what the 'this' keyword refers to when we call a function.
+              <pre><code>
+                function foo() {
+                console.log(this.bar);
+              }
+              var bar = “bar1”;
+              var o2 = {bar: “bar2”, foo: foo};
+              var o3 = {bar: “bar3”, foo: foo};
+              ------------------------------------
+              foo();  //“bar1”
+              o2.foo(); // “bar2”
+              o3.foo(); //“bar3”
+            </pre></code>
+            In this example, we are making calls to the function foo below the dotted line.  Now, lets go thru the 4 rules.
+            <ol>
+              <li>Rule #1: "The default rule" - This rule says that when you call a function like we do when we say: foo() ..
+                the 'this' keyword will refer to the 'global scope'.
+                So in our example, foo() calls the function foo and invokes it, then the console.log(this.bar) the 'this' here refers to the global scope. So we look in the global scope, not in the function, for a var called bar. we find it and see it is set to: "bar1". So what gets returned is "bar1".
+              </li>
+              <li>Rule #2: "The implicit binding rule" - This rule says that when you call a property on an object that references a function, the 'this' keyword will refer to the object you called the property on. Let me clarify that with our example: Below the dotted line in our ie, where we call the foo method on o2 where it says: o2.foo(), the implicit binding rule is simply a fancy way of saying that the 'this' keyword will now refer to the object: o2! That's all.. No big deal. So in the case of the next line where it says: o3.foo() ... the 'this' keyword now points to the 'o3' object. Let's walk thru that real quick:
+                <ol>
+                  <li>o3.foo() gets called.</li>
+                  <li>the foo property on o3 sees that it points to a function called 'foo'. </li>
+                  <li>the function foo gets invoked.</li>
+                  <li>this function will console.log the this.bar</li>
+                  <li>we know that due to the implicit binding rule, the 'this' keyword points to o3, so we look at the 'bar' property on o3 to see what it points to..</li>
+                  <li>o3.bar points to: "bar3" .. so bar3 is what gets logged to the conosle.</li>
+                </ol>
+                <li>Rule #3: "The explicit binding rule" - This rule says that if you use .call or .apply at the call site, then both of those keywords take as their first parameter the 'this' binding.  In layman's terms: when you use the .call or .apply keywords on your function calls, then whatever OBJECT you pass into the parentheses after .call or .apply will be what the 'this' keyword refers to..ie: someFunctionName.call(banana1) or someFunctionName.apply(banana2) .. banana1 or banana2 is what the 'this' keyword will refer to. We are EXPLICITLY stating what the 'this' keyword will refer to.</li>
+
+                lets look at another example of the Explicit Binding Rule:
+                <pre><code>
+                function foo() {
+                  console.log(this.bar);
+                }
+
+                var bar = “bar1”;
+                var obj = {bar: “bar2”};
+
+                foo(); // “bar1"
+                foo.call(obj); // “bar2”
+              </pre></code>
+              Here in this example we see on the last line a great display of the Explicit Binding rule. Again, we are EXPLICITLY saying what the 'this' keyword will refer to, and we do this by using the .call keyword and in parentheses the OBJECT we want the 'this' keyword to refer to. So, foo.call(obj) says: call the function 'foo' and explicitly CALL the OBJECT: 'obj' as the 'this' keyword! So in the function foo at the top, when it is run, the console.log (this.bar): 'this' keyword will refer to 'obj'. So we find the property 'bar' on the object 'obj' and it evaluates to: "bar2". Simple right?
+            </p>
+          </ol>
+              <p>
+                On the subject of .call and explicit binding, lets talk about "Hard Binding" real quick. Hard binding is a way to make the 'this' keyword predicatable. It is important to be able to make 'this' predicatable because when you are passing around functions to other methods, the 'this' keyword gets somewhat lost in translation. So in order to keep track of what object the 'this' keyword refers to, we need to know where the call site is at all times! Note: Whenever you are calling a function if it calls another function and that function hard binds an object, then that becomes the call site. Because that inner function call is the new call site, it will override any object that any of its parent functions hard bind. So you could say that the deepest level hard bind is the 'this' keyword. CONFUSED? Great! lets look at an example to clear all this up.
+                <pre><code>
+                function foo(){
+                  console.log(this.bar)
+                }
+                var obj = {bar: “bar”}
+                var obj2 = {bar: “bar2”}
+
+                var orig = foo;
+
+                foo = function(){ orig.call(obj); };
+                -------------------------------------
+                foo(); //“bar”
+                foo.call(obj2); // ???
+              </pre></code>
+              In our example here, when we call foo() below the dotted line, what is going on? <br>
+              Well, 1. Notice how the function foo at the top gets assigned to 'var orig' in the middle of the code. So now var orig points to function foo at the top. Then on the next line where it says: <br>
+              foo = function(){ orig.call(obj); }; <br>
+              Make a note that in the function block, orig which points to function foo at the top is being called, however it is binding the  global OBJECT: 'obj' to it. Therefore, the outcome when function foo is called and console logs (this.bar), the 'this' keyword is pointing to var obj and obj.bar evaluates to: "bar".<br>
+              <br>
+              But what happens on the next line that says: <br>
+              foo.call(obj2);<br>
+              Well, we are trying to override that obj hard binding, by calling obj2. But it doesn't work. This will still print out "bar"! WHY? <br>
+              Because even though foo.call(obj2) explicitly binds obj2 as the 'this' keyword, the inner function call where it says: <br>
+               orig.call(obj); }; <br>
+               Will Override the outer foo.call(obj2) explicit bind. There is a new call site! and this new call site is at: orig.call(obj)! Therefore, obj2 is ignored and obj is set as the 'this' keyword object! This is what is meant by "Hard Binding!"
+            </p>
+            <li>Rule #4: "The New Keyword" - this rule has nothing to do with making instances of classes (JS does not instantiate classes and there are no classes in JS). When the 'new' keyword is in front of any function call it turns that function call into a "Constructor Call".
+            And this does 4 things:
+              1. A brand new empty object will be created out of thin air.
+              2. ***That object gets linked to a different object.
+              3. That brand new object gets bound as the 'this' keyword.
+              4. If that function doesnt explicitly return anything, it implicitly inserts a " return 'this' " .. which means that brand new object that was created and pointed to 'this' , will actually be returned.
+             </li>
+          </ol>
+
+          So those are the four rules in determining what the 'this' keyword refers to in a function's execution, after we find the call site. <br>
+           Now, what if you encounter a program that has all four rules at the same time? What is the order of precedence for these rules?
+          Well the order of precedence is as follows:
+          <ol>
+            <li>Was the function called with 'new'? .. then use that object as the 'this' keyword. Note: the 'new' keyword overrides everything! even the "Hard binding" rule!</li>
+            <li>Was the function called with 'call' or 'apply' which specifies an implicit 'this'.. then use the object in parentheses as the 'this' keyword.</li>
+            <li>Was the function called via a containing or owning object? .. then use that owning object as the 'this' keyword.</li>
+            <li>Simply Default to the global object.</li>
+          </ol>
+        </p>
+
+        <p>If you have any questions or comments about this blog, please hit me up on twitter (<a href="https://twitter.com/n8leeDBC">@n8leedbc</a>)! thanks! </p>
+        <p> -Nate </p>
+
+      </div>
+
+    </div>
+  </div>
+  <!-- End Middle -->
+</div>
+<!-- End Menu Wrapper -->
+
+<div class="sb-slidebar sb-left sb-momentum-scrolling">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="">Blog</a></li>
+  </ul>
+</div>
+
+</body>
+</html>
