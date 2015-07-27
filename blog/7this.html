@@ -105,36 +105,9 @@
                 foo.call(obj); // “bar2”
               </pre></code>
               Here in this example we see on the last line a great display of the Explicit Binding rule. Again, we are EXPLICITLY saying what the 'this' keyword will refer to, and we do this by using the .call keyword and in parentheses the OBJECT we want the 'this' keyword to refer to. So, foo.call(obj) says: call the function 'foo' and explicitly CALL the OBJECT: 'obj' as the 'this' keyword! So in the function foo at the top, when it is run, the console.log (this.bar): 'this' keyword will refer to 'obj'. So we find the property 'bar' on the object 'obj' and it evaluates to: "bar2". Simple right?
-            </p>
-          </ol>
-              <p>
-                On the subject of .call and explicit binding, lets talk about "Hard Binding" real quick. Hard binding is a way to make the 'this' keyword predicatable. It is important to be able to make 'this' predicatable because when you are passing around functions to other methods, the 'this' keyword gets somewhat lost in translation. So in order to keep track of what object the 'this' keyword refers to, we need to know where the call site is at all times! Note: Whenever you are calling a function if it calls another function and that function hard binds an object, then that becomes the call site. Because that inner function call is the new call site, it will override any object that any of its parent functions hard bind. So you could say that the deepest level hard bind is the 'this' keyword. CONFUSED? Great! lets look at an example to clear all this up.
-                <pre><code>
-                function foo(){
-                  console.log(this.bar)
-                }
-                var obj = {bar: “bar”}
-                var obj2 = {bar: “bar2”}
+              </p>
+            </ol>
 
-                var orig = foo;
-
-                foo = function(){ orig.call(obj); };
-                -------------------------------------
-                foo(); //“bar”
-                foo.call(obj2); // ???
-              </pre></code>
-              In our example here, when we call foo() below the dotted line, what is going on? <br>
-              Well, 1. Notice how the function foo at the top gets assigned to 'var orig' in the middle of the code. So now var orig points to function foo at the top. Then on the next line where it says: <br>
-              foo = function(){ orig.call(obj); }; <br>
-              Make a note that in the function block, orig which points to function foo at the top is being called, however it is binding the  global OBJECT: 'obj' to it. Therefore, the outcome when function foo is called and console logs (this.bar), the 'this' keyword is pointing to var obj and obj.bar evaluates to: "bar".<br>
-              <br>
-              But what happens on the next line that says: <br>
-              foo.call(obj2);<br>
-              Well, we are trying to override that obj hard binding, by calling obj2. But it doesn't work. This will still print out "bar"! WHY? <br>
-              Because even though foo.call(obj2) explicitly binds obj2 as the 'this' keyword, the inner function call where it says: <br>
-               orig.call(obj); }; <br>
-               Will Override the outer foo.call(obj2) explicit bind. There is a new call site! and this new call site is at: orig.call(obj)! Therefore, obj2 is ignored and obj is set as the 'this' keyword object! This is what is meant by "Hard Binding!"
-            </p>
             <li>Rule #4: "The New Keyword" - this rule has nothing to do with making instances of classes (JS does not instantiate classes and there are no classes in JS). When the 'new' keyword is in front of any function call it turns that function call into a "Constructor Call".
             And this does 4 things:
               1. A brand new empty object will be created out of thin air.
@@ -153,7 +126,8 @@
             <li>Was the function called via a containing or owning object? .. then use that owning object as the 'this' keyword.</li>
             <li>Simply Default to the global object.</li>
           </ol>
-        </p>
+        </ol>
+      </p>
 
         <p>If you have any questions or comments about this blog, please hit me up on twitter (<a href="https://twitter.com/n8leeDBC">@n8leedbc</a>)! thanks! </p>
         <p> -Nate </p>
