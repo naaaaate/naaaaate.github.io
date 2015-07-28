@@ -1,0 +1,148 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Module Pattern </title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" type="text/css" href="../css/theme.css">
+  <link rel="stylesheet" type="text/css" href="../font-awesome/css/font-awesome.css">
+
+  <link rel="stylesheet" href="../css/default.css">
+  <link rel="stylesheet" href="../css/googlecode.css">
+
+
+  <script src="../js/jquery-1.11.2.min.js"></script>
+  <script src="../js/prism.js"></script>
+  <script src="../js/custom.js"></script>
+  <script src="../js/slidebars.min.js"></script>
+  <script src="../js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- this will add github gist code snippets.. -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.1/gist-embed.min.js"></script>
+</head>
+<body class="">
+
+  <div id="sb-site">
+
+    <div class="region header">
+      <div class="region-inner">
+
+        <div class="sb-toggle-left"><i class="fa fa-bars"></i></div>
+        <ul class="menu">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="index.html">Blog</a></li>
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="region featured" style="background-image: url('../images/fox.jpeg');">
+      <div class="region-inner">
+
+        <div class="page-title">
+          <h1></h1>
+          <h2></h2>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="region middle">
+      <div class="region-inner">
+
+        <div class="content">
+
+          <div class="post">
+            <h1>Module Patterns in JavaScript (for Beginners)</h1>
+            <p class="post-type">Jul 26th 2015</p>
+
+            <!-- <p>
+              tl;dr: Our journey into Huddle’s security engine ends with the Visitor pattern, which makes it easy to add new operations to a closed set of data classes.
+            </p> -->
+            <p>
+              Classic Module Pattern:<br>
+              Let's breifly discuss module patterns in Javascript. Module patterns are the most common patterns you will see in JavaScript, so its a good idea to have a basic understanding of what they are.<br>
+              Now, Module Patterns have 2 distinct characteristics:
+              <li> 1. There must be an outer function that is executed could be an IIFE.
+              </li>
+              <li>
+                2. There must be one or more inner functions that get returned and keeps closure over the inner state.
+              </li>
+              Why do we even need to use the Module Pattern? Well, we use the module pattern for privacy or to hide things from the public. The module pattern comes from the idea of: encapsulation, or in software design something called the "Principle of Least Exposure" where we make everything private and only expose what needs to be made public. Let's take a look at some code:
+
+              <pre><code>
+                var foo = (function() {
+                  var o = {bar: “bar”}
+                  return {
+                    bar: function () {
+                      console.log(o.bar);
+                    }
+                  };
+                })();
+          --------------------------
+          foo.bar(); //"bar"
+        </pre></code>
+        <p>
+          This is a basic example of the module pattern. Here you see:
+          <ul>
+          <li>1. an outer function expression called foo.</li>
+          <li>2. an object being returned that has a method being returned within that object (ie: the method 'bar').</li>
+          *Remember, that the 2 characteristics of the classic module pattern is:
+            <ol>
+            <li>1. There must be an outer function executed.</li>
+            <li>2. There must be one or more returned inner functions.
+          Here, we accomplish both those characteristics and we did so using an IIFE.</li>
+            </ol>
+          <li>3. Here's what is happening in our example: there is an object being returned with the method bar inside of it.</li>
+          <li>4. So when we call foo.bar(), calling the IIFE foo will give you back the object. Now you can call properties on the object which in this case is bar. Bar actually points to a function which makes it a method and calling the method bar will console log the object o's bar property.</li>
+          <li>5. Again, please note that the reason the bar method has access to the o object is because it is a closure. It is a function that is returned inside of another function, and it has access to its lexical scope (or the scope of its outer function even when it is being called somewhere outside the function it is in.)</li>
+        </ul>
+        </p>
+      </p>
+      <p>
+        Modified Module Pattern:<br>
+        There are also variations of the Classic Module Pattern. One is called the modified module pattern. This pattern is exactly the same thing as the classic module pattern except for one thing. Here we are returning the name of the object that points to the inner private object. Why is that so important? Because now we can update and modify our inner object at runtime! (in laymans terms: we can add and remove methods or update property values that are in the private scope.) Lets take a look at an example:
+        <pre><code>
+        var foo = function (){
+          var publicAPI = {
+            bar: function(){
+           publicAPI.baz();
+          },
+          baz: function(){
+            console.log(“baz”);
+          }
+        };
+        return publicAPI;
+        })();
+        ------------------------
+        foo.bar();  // “baz"
+        </pre></code>
+      </p>
+      <p>
+        As you can see in this example, we are returning publicAPI which is the name that points to the object in our inner function. So when we call foo it would be the equivalent of calling publicAPI object because that is what is being returned. In our example, we can now call any property on that publicAPI such as .bar() which calls publicAPI.baz().. which console logs: "baz"
+      </p>
+
+        <p>Hopefully that helps clear up the module pattern in JavaScript. If you have any questions or comments about this blog, please contact me on twitter (<a href="https://twitter.com/n8leeDBC">@n8leedbc</a>)! thanks! </p>
+        <p> -Nate </p>
+
+      </div>
+
+    </div>
+  </div>
+<!-- End Middle -->
+</div>
+<!-- End Menu Wrapper -->
+
+<div class="sb-slidebar sb-left sb-momentum-scrolling">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="">Blog</a></li>
+  </ul>
+</div>
+
+</body>
+</html>
