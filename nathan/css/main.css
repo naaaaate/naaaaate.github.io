@@ -1,0 +1,189 @@
+/***********************************
+General Element Styles
+***********************************/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.6;
+  color: #3a3a3a;
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+a {
+  color: #093a58;
+}
+
+
+h2,
+h3,
+h4 {
+  margin-top: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+/***********************************
+Gemeral Layout Styles
+***********************************/
+
+.main-header a,
+.main-nav a {
+  text-align: center;
+  display: block;
+  padding: 10px 15px;
+}
+
+.main-nav a {
+  font-size: .95em;
+  color: #3acec2;
+  text-transform: uppercase;
+}
+
+.main-nav a:hover {
+    color: #093a58;
+    border-bottom: 7px solid #3acec2;
+}
+
+/* layout containers */
+
+.main-header {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.banner,
+.main-footer {
+  text-align: center;
+}
+
+.banner {
+  color: #fff;
+  background: #3acec2;
+  padding: 3em 0;
+  height: 555px;
+}
+
+.hidden {
+  display: none;
+}
+
+.col {
+  text-align: center;
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+.primary {
+  background: lightgrey;
+
+}
+
+
+.los_angeles {
+  /*background: lightgrey;*/
+}
+
+
+
+.main-footer {
+  background: #444 /* #d9e4ea */;
+  color: white;
+  padding: 2em 0;
+  margin-top: 30px;
+}
+
+/*----- Page Elements----- */
+
+#main-logo a{
+  padding: 0;
+  color: #3acec2;
+  text-decoration: none;
+  text-align: center;
+  font-family: 'Changa One', sans-serif;
+  font-size: 2em;
+  width: 100px;
+  border: 1px solid #3acec2;
+  border-radius: 10px;
+  /*padding-top: 15px;*/
+  /*padding-bottom: 15px;*/
+  transition-duration: 1s;
+}
+
+#main-logo:hover a {
+  /*transform: scale(1.2);*/
+  color: #fff;
+  background: #3acec2;
+  border-radius: 50%;
+}
+
+
+/***********************************
+Media Queries
+**********************************/
+
+@media (min-width: 769px) {
+  .main-header,
+  .row,
+  portfolio
+  {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1025px) {
+  .main-header
+   {
+    width: 75%;
+    max-width: 1150px;
+  }
+  .row,
+  .primary,
+  .secondary,
+  .los_angeles,
+  .third,
+  portfolio
+  {
+    width: 90%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

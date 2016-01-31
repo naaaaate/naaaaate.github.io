@@ -1,0 +1,229 @@
+/***********************************
+Base Styles
+***********************************/
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.row {
+  flex: 1;
+}
+
+
+
+
+
+/***********************************
+Media Queries
+***********************************/
+
+@media (min-width: 769px){
+
+  #pacman {
+    margin: 0 auto;
+    width: 0px;
+    height: 0px;
+    border-right: 60px solid transparent;
+    border-top: 60px solid red;
+    border-left: 60px solid red;
+    border-bottom: 60px solid red;
+    border-top-left-radius: 60px;
+    border-top-right-radius: 60px;
+    border-bottom-left-radius: 60px;
+    border-bottom-right-radius: 60px;
+  }
+
+  .pageShow{
+    /*border: 1px solid black;*/
+    color: black;
+    /*background: #f00;*/
+    transition: linear 1s;
+  }
+
+  .pageShow.ng-hide{
+    opacity: 0;
+  }
+
+  .main-header,
+  .main-nav {
+    display: flex;
+  }
+
+  .main-header {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+  }
+
+  .main-nav a {
+    border-bottom: 7px solid transparent;
+  }
+
+  .banner {
+    display: block;
+    width: 75%;
+    min-height: 100%;
+    margin: 0 auto;
+    /*background: url("../img/star_wars.jpg") no-repeat center;*/
+    background-size: cover;
+    transition-duration: .3s;
+  }
+
+  .banner:hover {
+    /*transform: scale(1.2);*/
+    border-radius: 10%;
+  }
+
+  .headline {
+    margin-top: 1em;
+    font-size: 5em;
+  }
+
+  .social_media {
+    /*position: absolute;*/
+    text-align: center;
+    margin-top: 2em;
+    margin-right: 50px;
+  }
+
+  .social_media i {
+    /*border: 1px solid white;*/
+    color: white;
+    padding: .2em;
+    margin: .5em;
+  }
+
+
+
+  .row {
+    flex-direction: column;
+    margin: 0 auto;
+  }
+
+  .col {
+    padding-top: 5em;
+    padding-bottom: 5em;
+    margin: 0 auto;
+  }
+
+  .primary {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 7em;
+    margin-bottom: 14em;
+    /*background: url("../img/family_front.jpg") no-repeat;*/
+    /*background-size: cover;*/
+  }
+
+  .welcome {
+    font-size: 3em;
+    color: #898989;
+  }
+
+  /*#family_front {
+    width: 400px;
+    height: 200px;
+    border-radius: 10%;
+  }*/
+
+  .about {
+    font-family: "Pontano Sans", sans-serif;
+    font-size: 1.4em;
+    width: 50%;
+  }
+
+  .secondary {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    background: lightgrey;
+    padding-top: 3em;
+    padding-bottom: 3.5em;
+  }
+
+  .secondary h1 {
+    font-size: 3em;
+  }
+
+  #service {
+    border: 20px solid white;
+    border-radius: 2%;
+  }
+
+  .secondary h3 {
+    margin-top: 2em;
+  }
+
+  .los_angeles {
+
+  }
+
+  .los_angeles_pic {
+    width: 100%;
+    min-height: 700px;
+    background: url("../img/losangeles.jpg") fixed;
+    background-size: cover;
+    padding-top: 0;
+    padding-bottom: 0;
+    color: white;
+  }
+
+  .generosity {
+    padding-top: 3em;
+    font-size: 4em;
+  }
+
+  .giving {
+    font-size: 2.2em;
+  }
+
+
+  .third {
+    color: #898989;
+    font-size: 1.5em;
+  }
+
+  #pastors {
+    width: 250px;
+    height: 200px;
+    border-radius: 100%;
+  }
+
+  .third h4 {
+    color: black;
+    margin-bottom: 0
+  }
+
+  .lead_pastors {
+    font-size: .9em;
+    font-family: "Ropa Sans", sans-serif;
+  }
+
+
+
+
+}
+
+@media (min-width: 1025px){
+  .main-header{
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+
+  .tagline {
+    font-size: 1.5em;
+  }
+
+  .row {
+    flex-direction: column;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+
+}
