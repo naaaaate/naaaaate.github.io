@@ -78,75 +78,7 @@
               I want you to think of the Event Loop as a chef in a kitchen at a restaurant. The chef cooks the food and puts it on the plate of the customers at the restaurant. Now, think of the food that the chef makes as the callback functions that take a while to process and return from remote webservers. The chef won't put the food that he has cooked on the customers plate, unless there is a clean plate for the chef to place the food on. This is similar to the Event Loop not putting the callback function that needs to run on the stack, until the stack is cleared and finished running all of its processes. Now once there is a clean plate available, the chef can put the food on that clean plate and a server can come pick it up and deliver it to the customer. Same analogy, the Event Loop can take what is in the task queue, and throw in on the stack so that the code can actually run, but again only if the stack is clear.
             </p>
 
-              Lets look at a piece of code that we will refer to as our example:
-              <pre><code>
-              function Foo(who) {
-                this.me = who;
-              }
 
-              Foo.prototype.identify = function() {
-                return “I am “ + this.me;
-              };
-
-              var a1 = new Foo(“a1”);
-              var a2 = new Foo(“a2”);
-              a2.speak = function() {
-                alert(“Hello, “ + this.identify() + “.”);
-              };
-
-              a1.constructor === Foo;
-              a1.constructor === a2.conostructor;
-              a1.__proto__ === Foo.prototype;
-              a1.__proto__ === a2.__proto__;
-        </pre></code>
-        </p>
-        <p>
-        Let me start by breaking down what happens when you create new objects and functions and start using the 'prototype' keyword, like we see in the first line of code.
-        <ul>
-          <li>
-            1. Before any object or function is ever declared in line 1, JS has a function already built into (or baked into) its language. ie: Speaking of "baked in", the "baked in" function is kind of like cheese-stuffed crust pizza.. Let me explain... When you get open the box of freshly delivered pizza, the cheese is already stuffed into the crust. You do not have to stuff anything or try to understand how it was stuffed, just accept that there is cheese stuffed into the crust of that delicious pepperoni pizza.  Warning: here's the confusing part.. The function that is already baked into JS has a name called: "Object". Even more confusing is that: the function "Object" actually points to a built in: Object, by attaching the 'prototype' keyword to it. I know that was confusing, but please just remember: before any function or object is created, JS has 2 things 'baked into' it: 1. a function called "Object" .. 2. an Object referred to as: "Object.prototype". Note: this Object.prototype has built into it methods like: toString and valueOf etc..
-          </li>
-          <li>
-            2. Now, in line 1 when the function Foo is decalared, it has the same behavior as the baked in object. What I mean by this is that a function Foo will be created and it will point to an object by combining the word: "Foo" with the word: "prototype". Now, one more thing happens.. The object that we refer to with: Foo.prototype has a link on it called: ".constructor" that points back to the function: "Foo".
-          </li>
-          <li>3. On the fourth line of code where it says: <br>
-                Foo.prototype.identify = function() {<br>
-                we are adding a property called: "identify" to the "Foo.prototype Object". Doesn't this sound familiar? Calling properties on an Object in JS? In a few moments you will see how doing this can allow new objects we create to call this property called: "identify".
-          </li>
-          <li>4. On the 8th line of code, where it says;<br>
-                var a1 = new Foo(“a1”);<br>
-                we are creating a new object by calling the Foo function, and assigning it to the var a1. So think of a1 as the new object. Now, remember when we call the new keyword before a function, 4 things happen:
-
-                <ul>
-                  <li>a.  a new object called a1 gets created</li>
-                  <li>b.  a1 gets linked to the Function prototype object (in this case it is: "Foo.prototype"</li>
-                  <li>c.  the 'this' keyword gets set to the new object: a1's context (so in line 2 where it says this.me, the this refers to: a1, and now we are assigning a .me property on to a1.</li>
-                  <li>d.  the 'this' keyword is returned which is a1.  </li>
-                </ul>
-        </ul>
-      </p>
-      <p>
-        <ul>
-          <li>5.  On the 11th line of code where it says:<br>
-          a2.speak = function() {<br>
-          we are adding a .speak method onto the a2 object we created on line 9. Note: this is only on a2 object and nothing else.
-           </li>
-          <li>6.  On the 15th line of code where it says:<br>
-            a1.constructor === Foo;<br>
-            notice how we are calling the .constructor link(or method) on the a1 object, but we have not declared any a1.constructor() in our code. But, remember in line 1 how we said Foo.prototype automatically gets a link created called: Foo.prototype.constructor added to it? And, Remember how we said that whenever we create a new object using the new keyword, a chain link between that new object and the Function.prototype object gets created? (Yes, I know you remember this!). Well now that there is a link from a1 to Foo.prototype, whatever we don't find on the a1 object, we can navigate up the chain-link (called: the prototype chain) and look for the method or property that we are searching for. So in our example: if we are looking for .constructor on a1 and we do not find it, we can search up the prototype chain link and we will find on the "Foo.prototype object" a property link called: ".constructor" that points to the Foo function. So when we run this code: <br><br>
-            a1.constructor === Foo;<br><br>
-            we will see that it evaluates to true. Because again, the .constructor on Foo.prototype points to the Foo function!
-          </li>
-          <li>7.  Now you might be asking, "But what's going on in line 17???" Looks confusing right? ... its not. <br>
-            on line 17 where it says:<br>
-            a1.__proto__ === Foo.prototype;<br>
-            the __proto__ is what is called a: "Dunder".
-            What happens when the "Dunder" is called on a1 is it will look at that objects properties for __proto__ .. it won't find it, so it goes up the prototype chain link and looks for __proto on the Function.prototype .. it still doesn't find it. So where does it go? .. Well, there is another link that we did not discuss. This link will link the Foo.prototype object to the "Baked-in" function.prototype object. On this "Baked-in" function.prototype object, is a "Getter Function" (Don't be alarmed, just a funny name for a function that gets or returns something) called: __proto__ . Now, what does this getter function called: __proto__ get for us? .. It gets or returns the prototype chain-link of whatever the 'this' keyword is. <br>
-            In our example, the 'this' keyword is a1 because remember: the 'this' keyword is determined by the 4 rules at the call site and line 17 is the call site. So what does the prototype chain link of the 'this' keyword return.. well, in this case it returns: the object reference: Foo.prototype. Why? Why? Why? .. well because, remember the 'this' keyword points to a1, the prototype chain-link on this is a fancy way to say that a1 is linked to the Foo.prototype object. So imagine a line that connects a1 and the Foo.prototype object. <br>
-            You can think of it like this: __proto__ is just an reference to that imaginary line that connects a1 and its Foo.prototype object.
-           </li>
-        </ul>
-      </p>
       <p>I know that was a long one, but hopefully that helps clear up prototypes in JavaScript. If you have any questions or comments about this blog, please contact me on twitter (<a href="https://twitter.com/n8leeDBC">@n8leedbc</a>)! thanks! </p>
       <p> -Nate </p>
 
