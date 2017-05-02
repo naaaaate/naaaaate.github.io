@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Two Dimensional Arrays </title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <link rel="stylesheet" type="text/css" href="../css/theme.css">
+  <link rel="stylesheet" type="text/css" href="../font-awesome/css/font-awesome.css">
+
+  <link rel="stylesheet" href="../css/default.css">
+  <link rel="stylesheet" href="../css/googlecode.css">
+
+
+  <script src="../js/jquery-1.11.2.min.js"></script>
+  <script src="../js/prism.js"></script>
+  <script src="../js/custom.js"></script>
+  <script src="../js/slidebars.min.js"></script>
+  <script src="../js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <!-- this will add github gist code snippets.. -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.1/gist-embed.min.js"></script>
+
+</head>
+<body class="">
+
+  <div id="sb-site">
+
+    <div class="region header">
+      <div class="region-inner">
+
+        <div class="sb-toggle-left"><i class="fa fa-bars"></i></div>
+        <ul class="menu">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="index.html">Blog</a></li>
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="region featured" style="background-image: url('../images/fox.jpeg');">
+      <div class="region-inner">
+
+        <div class="page-title">
+          <h1></h1>
+          <h2></h2>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="region middle">
+      <div class="region-inner">
+
+        <div class="content">
+
+          <div class="post">
+            <h1>AJAX for beginners</h1>
+            <p class="post-type">Jul 25th 2016</p>
+            <!-- start here -->
+            <p>
+              tldr: AJAX means Asynchronous Javascript and XML.  Basically you are sending a request to a server, so that server will send you back information. When you recieve information back, do something with that data, such as: tell user "Email Sent Successfully" or fill in a div in your html with the data that came back from the server in list format.
+            </p>
+            <p>
+              Wow, its almost been another year since I Blogged again. LOL. anyways, lets Go! <br>
+              I wanted to discuss AJAX, what its used for, and how to use it.  In a nutshell, AJAX is the key technology used in API calls. When I first started getting into programming, that's all everybody talked about was API's and how to "Consume" them. Well, this is basically what they're talking about. All an "API" call is, is an AJAX call, where you send a request to a server somewhere, and recieve information back from that server. Thats it. What you do with that returned data is up to you, and sky's the limit! You can use the data for anything like: retrieving movies from a movie database and using the data returned from the server to create a listing of all movies so that you can search for movies by actors or title. Or you make ajax calls to twitter's servers and use the returned tweets to show up on your blog in a section called "My Latest Tweets".
+            </p>
+            <p>
+              Let's talk about how to use AJAX in Javascript. Now there are more up to date ways to make AJAX calls using JQuery and other languages that make it easier, but I wanted to take a look at how to do it the old fashioned way in vanilla JS.
+              <ul>
+                <li>Step 1: create an XML HTTP Request Object</li>
+                <li>Step 2: create a callback function to do something with data returned.</li>
+                <li>Step 3: Open the XHR request</li>
+                <li>Step 4: Send the XHR request</li?
+              </ul>
+              Lets dive into these 4 steps.
+              <ul>
+                <li>Step 1:</li>
+                <p>
+                  Creating the XML HTTP Request basically means you are preparing a request to send to the Server that you want data back from. For example, If you wanted to throw a dinner party for friends, you need to first prepare the food, wash the vegetables, season the meat, heat up the grill etc. When the food is ready to throw on the grill, then it can be cooked and served. The same applies to the data you want back from the server, when the request object is "prepared", then you can send it to the "grill" aka the remote server. When the steak is finished cooking on the grill, then you can serve the steaks to your guests, or in our example, when the server is done processing or "cooking" our request, then it sends the data back for us to "eat" or use on our web page. So again, first we create the XML HTTP Request object. we do this with the following code:
+                </p>
+                <pre><code>
+                  var xhr = new XMLHttpRequest();
+                </pre></code>
+                <br>
+                <li>Step 2:</li>
+                <p>
+                  Creating a callback function: This callback function is the function that defines what we want to do with our data we are getting back from the server. So if you want to display on your webpage all your latest tweets you are getting back from twitter's server then you write that code here in the callback function. Now, why a callback function? or better question , what is a callback function? ...
+                </p>
+                <p>
+                  Well, in Javascript land everything runs asynchronously. What that means is, Javascript will not wait for one line of code or one function to complete before moving on to the next line of code. Therefore its asynchronous or not synchronous. So what happens in the twitter example, we are making a request to twitter for the latest tweets, however we aren't going to let the server hold us up from running the rest of the code in our program. Our program will continue to run to the next line of code then the next, then the next, and so on. When the twitter server decides to send back the lsit of tweets that we requested, then our callback function will take over and run the necessary code to put our latest tweets in our web page and update our page, but again, we aren't going to wait on that Twitter server to send us our tweets, we are going to continue as normal and do other things on our web page. Such as handle click events or mouse events that user's are doing on our webpage.
+                </p>
+                <p>an example of a call back function would be something like:</p>
+                <pre><code>
+                  xhr.onReadyStateChange = function() {
+                    if(xhr.readyState === 4) {
+                      document.getElementById('ajax').innerHtml = xhr.responseText;
+                    }
+                  }
+                </code></pre>
+                <p>okay, so a few things going on in this code here.. First of all, all XMLHttpRequest Objects have properties built in. We need to know a few of these:
+                </p>
+                <li>.onReadyStateChange -The ready state is constantly being checked and sent back to our object request that we created on our webpage from the server.  There are 4 changes that it goes thru before the request is complete. On the 4th change, we know its complete, so what we do here is we check our object for any changes in the state of the request, and if there is any change the function fires off and does one more check. it checks if the readyState is equal to 4, our final change
+                </li>
+                <li>.readyState === 4  -This is basically saying when we get to the 4th and final change let us know, then we can get the data back from the server , called a "response" and change our webpage up to our liking. In the case of our twitter example, we can use the response data to update our page to a list of our latest tweets.
+                </li>
+
+                <li>Step 3:</li>
+                <p>Open the XHR request. Basically when we open the request, we are doing 2 things. <br>
+                  <li>1. we are sending a GET or POST request.</li>
+                  <li>2. we are sendint that request to the location of the actual server.</li>
+                  Think of this step as gathering the location of the server we want to send to and what action we want to perform on the server when it gets there, for ie: do we want to add to that server's database with 'POST' or just retrieve some data with 'GET'.
+                  The code would look like this..
+                </p>
+                <pre><code>
+                  xhr.open('GET', 'sidebar.html');
+                </code></pre>
+
+                <li>Step 4:</li>
+                <p>Here is where we actually send the request off.</p>
+                <pre><code>
+                  xhr.send();
+                </code></pre>
+
+                <p>
+                  Also, check this out, if we wanted to put in our html, a button that when clicked fires off a function that sends the AJAX request we could do so as well..
+                </p>
+               <pre><code>
+                <script type="text/javascript">
+                  xhr.open('GET', 'sidebar.html')
+                  function sendAJAX(){
+                    xhr.send();
+                    document.getElementById('load').style.display = 'none'; //makes button dissappear.
+                  }
+
+                </script>
+                <div>
+                  <button id="load" onClick="sendAJAX()">Click Me</button>
+                </div>
+               </code></pre>
+              </ul>
+
+
+
+            </p>
+          </div>
+<!-- End Blog Post -->
+        </div>
+      </div>
+<!-- End Middle -->
+</div>
+<!-- End Menu Wrapper -->
+
+<div class="sb-slidebar sb-left sb-momentum-scrolling">
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="">Blog</a></li>
+  </ul>
+</div>
+
+<script src="js/testquestionsarray.js"></script>
+</body>
+</html>
